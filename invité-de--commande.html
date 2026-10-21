@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css"
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesona CMD</title>
+
+<style>
+body{
+    font-family: Arial;
+    margin:0;
+    background:#0f172a;
+    color:white;
+}
+header{
+    background:#1e293b;
+    padding:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.lang button{
+    margin-left:5px;
+    padding:5px 10px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+.container{
+    padding:20px;
+}
+.section{
+    background:#1e293b;
+    margin:15px 0;
+    padding:15px;
+    border-radius:10px;
+}
+h2{
+    color:#38bdf8;
+}
+code{
+    background:black;
+    color:#00ff00;
+    padding:5px;
+    display:block;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+<div id="title">💻 Lesona : Invité de Commande</div>
+
+<div class="lang">
+<button onclick="setLang('fr')">FR</button>
+<button onclick="setLang('mg')">MG</button>
+</div>
+</header>
+
+<div class="container">
+
+<div class="section">
+<h2 id="defTitle">📌 Famaritana</h2>
+<p id="defText">
+Ny CMD dia outil ahafahanao mifehy ordinateur amin'ny commandes.
+</p>
+</div>
+
+<div class="section">
+<h2 id="openTitle">🚀 Fanokafana</h2>
+<p id="openText">Windows + R → soraty cmd</p>
+</div>
+
+<div class="section">
+<h2 id="cmdTitle">📂 Commandes</h2>
+<p>dir</p>
+<code>dir</code>
+
+<p>cd</p>
+<code>cd Documents</code>
+</div>
+
+</div>
+
+<script>
+function setLang(lang){
+
+if(lang === 'fr'){
+document.getElementById("title").innerHTML = "💻 Leçon : Invite de commande";
+document.getElementById("defTitle").innerHTML = "📌 Définition";
+document.getElementById("defText").innerHTML = "CMD est un outil qui permet de contrôler un ordinateur avec des commandes.";
+document.getElementById("openTitle").innerHTML = "🚀 Ouverture";
+document.getElementById("openText").innerHTML = "Windows + R → tapez cmd";
+document.getElementById("cmdTitle").innerHTML = "📂 Commandes de base";
+}
+
+if(lang === 'mg'){
+document.getElementById("title").innerHTML = "💻 Lesona : Invité de Commande";
+document.getElementById("defTitle").innerHTML = "📌 Famaritana";
+document.getElementById("defText").innerHTML = "Ny CMD dia outil ahafahanao mifehy ordinateur amin'ny commandes.";
+document.getElementById("openTitle").innerHTML = "🚀 Fanokafana";
+document.getElementById("openText").innerHTML = "Windows + R → soraty cmd";
+document.getElementById("cmdTitle").innerHTML = "📂 Commandes";
+}
+
+}
+</script>
+
+<section class="hero">
+  <nav class="card">
+<a href="Commande-de-base.html">commande de base</a>
+</nav>
+
+<nav class="card">
+<a href="commande-avancé.html">commande avancé</a>
+</nav>
+
+<nav class="card">
+<a href="commande-dir.html">commande dir</a>
+</nav>
+
+<nav class="card">
+<a href="dir.html">dir</a>
+</nav>
+
+<nav class="card">
+<a href="command-cd.html">command cd.html</a>
+</nav>
+<nav class="card">
+  <a href="mkdir.html">mkdire</a>
+</nav>
+<nav class="card">
+  <a href="del.html">command del</a>
+</nav>
+
+<nav class="card">
+  <a href="cls.html">command cls</a>
+</nav>
+
+<nav class="card">
+  <a href="tasklist.html">command tasklist</a>
+</nav>
+
+<nav class="card">
+  <a href="taskkill.html">command taskkill</a>
+</nav>
+
+
+<nav class="card">
+  <a href="ipconfig.html">command ipconfig</a>
+</nav>
+
+<nav class="card">
+  <a href="ping.html">command ping</a>
+</nav>
+
+<nav class="card">
+  <a href="shutdown.html">command shutdown</a>
+</nav>
+
+<nav class="card">
+  <a href="rmdir-rd.html">command rmdir / rd</a>
+</nav>
+
+<nav class="card">
+  <a href="copy-xcopy-robocopy.html">command copy / xcopy / robocopy</a>
+</nav>
+
+<nav class="card">
+  <a href="move.html">command move</a>
+</nav>
+<nav class="card">
+  <a href="attrib.html">command attrib</a>
+</nav>
+
+<nav class="card">
+  <a href="formatage.html">command Formatage flash proteger par ecriture </a>
+</nav>
+
+<nav class="card">
+  <a href="diskpart.html">command diskpart</a>
+</nav>
+
+<nav class="card">
+  <a href="netstat.html">command netstat</a>
+</nav>
+
+
+<nav class="card">
+  <a href="tracert-pathping.html">command tracert / pathping</a>
+</nav>
+
+
+<nav class="card">
+  <a href="systeminfo.html">command systeminfo </a>
+</nav>
+
+</section>
+
+
+
+</body>
+</html>

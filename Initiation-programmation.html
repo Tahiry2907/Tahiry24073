@@ -1,0 +1,1046 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Langages de programmation | Mr Tahiry</title><style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:
+        radial-gradient(circle at top,#203a43,#0f2027 60%,#081318);
+    color:white;
+    min-height:100vh;
+    line-height:1.7;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header{
+    text-align:center;
+    padding:30px 15px;
+    background:rgba(0,0,0,.35);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,255,255,.15);
+}
+
+header h1{
+    font-size:clamp(25px,6vw,42px);
+    margin-bottom:8px;
+}
+
+header p{
+    opacity:.85;
+}
+
+
+/* =====================================================
+   LANGUAGE BUTTONS
+===================================================== */
+
+.languages{
+    margin-top:18px;
+}
+
+.lang-btn{
+    margin:5px;
+    padding:11px 20px;
+    border:none;
+    border-radius:25px;
+    cursor:pointer;
+    background:white;
+    color:#203a43;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.lang-btn:hover{
+    transform:translateY(-3px);
+}
+
+.lang-btn.active{
+    background:#00c853;
+    color:white;
+}
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.container{
+    width:92%;
+    max-width:1050px;
+    margin:25px auto;
+}
+
+
+/* =====================================================
+   INTRO BANNER
+===================================================== */
+
+.hero{
+    padding:30px;
+    margin-bottom:25px;
+    border-radius:20px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,200,83,.18),
+            rgba(0,229,255,.15)
+        );
+    border:1px solid rgba(255,255,255,.15);
+    text-align:center;
+}
+
+.hero h2{
+    color:#00e5ff;
+    margin-bottom:10px;
+}
+
+
+/* =====================================================
+   CARDS
+===================================================== */
+
+.card{
+    background:white;
+    color:#222;
+    padding:25px;
+    margin:20px 0;
+    border-radius:18px;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+    animation:fadeIn .5s ease;
+}
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+.card h2{
+    color:#0d47a1;
+    margin-bottom:15px;
+}
+
+.card h3{
+    color:#1565c0;
+    margin:15px 0 8px;
+}
+
+.card p{
+    margin-bottom:12px;
+}
+
+
+/* =====================================================
+   INFO
+===================================================== */
+
+.info{
+    background:#e3f2fd;
+    border-left:5px solid #2196f3;
+    padding:15px;
+    border-radius:8px;
+    margin:15px 0;
+}
+
+.warning{
+    background:#fff3e0;
+    border-left:5px solid #ff9800;
+    padding:15px;
+    border-radius:8px;
+    margin:15px 0;
+}
+
+.success{
+    background:#e8f5e9;
+    border-left:5px solid #2e7d32;
+    padding:15px;
+    border-radius:8px;
+    margin:15px 0;
+}
+
+
+/* =====================================================
+   CODE
+===================================================== */
+
+.code{
+    background:#111;
+    color:#00ff66;
+    padding:18px;
+    border-radius:12px;
+    margin:15px 0;
+    font-family:"Courier New",monospace;
+    overflow:auto;
+    line-height:1.7;
+}
+
+.code-title{
+    font-weight:bold;
+    margin-top:15px;
+}
+
+
+/* =====================================================
+   LANGUAGE CONTENT
+===================================================== */
+
+.hidden{
+    display:none !important;
+}
+
+
+/* =====================================================
+   TABLE
+===================================================== */
+
+.table-container{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+    min-width:650px;
+}
+
+th,
+td{
+    border:1px solid #ddd;
+    padding:12px;
+    text-align:left;
+}
+
+th{
+    background:#0d47a1;
+    color:white;
+}
+
+tr:nth-child(even){
+    background:#f5f5f5;
+}
+
+
+/* =====================================================
+   TAGS
+===================================================== */
+
+.tag{
+    display:inline-block;
+    background:#e3f2fd;
+    color:#0d47a1;
+    padding:5px 10px;
+    border-radius:7px;
+    margin:3px;
+    font-family:monospace;
+    font-weight:bold;
+}
+
+
+/* =====================================================
+   QUIZ
+===================================================== */
+
+.quiz{
+    background:#f5f5f5;
+    padding:20px;
+    border-radius:15px;
+    margin-top:15px;
+}
+
+.question{
+    margin-bottom:20px;
+    padding:15px;
+    background:white;
+    border-radius:10px;
+    box-shadow:0 3px 10px rgba(0,0,0,.1);
+}
+
+.quiz label{
+    display:block;
+    padding:8px;
+    cursor:pointer;
+}
+
+.quiz-btn{
+    background:#1565c0;
+    color:white;
+    padding:12px 20px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.quiz-btn:hover{
+    background:#0d47a1;
+}
+
+#quizResult{
+    margin-top:15px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+.top-btn{
+    display:inline-block;
+    padding:10px 18px;
+    background:#00c853;
+    color:white;
+    text-decoration:none;
+    border-radius:10px;
+    margin-top:15px;
+}
+
+.top-btn:hover{
+    background:#00a844;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+    text-align:center;
+    padding:30px 15px;
+    margin-top:40px;
+    background:rgba(0,0,0,.4);
+    border-top:1px solid rgba(255,255,255,.1);
+}
+
+footer strong{
+    color:#00e5ff;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:600px){
+
+    .container{
+        width:95%;
+    }
+
+    .card{
+        padding:18px;
+    }
+
+    .hero{
+        padding:20px;
+    }
+
+    .code{
+        font-size:13px;
+    }
+
+    table{
+        font-size:14px;
+    }
+
+}
+
+</style></head><body id="top"><!-- =====================================================
+     HEADER
+===================================================== --><header><h1>💻 LANGAGES DE PROGRAMMATION</h1><p class="fr">
+Cours complet de programmation — Niveau débutant
+</p><p class="ml hidden">
+Lesona feno momba ny langage de programmation — Ambaratonga voalohany
+</p><div class="languages"><button class="lang-btn active"
+onclick="setLang('fr',this)">
+🇫🇷 Français
+</button>
+
+<button class="lang-btn"
+onclick="setLang('ml',this)">
+🇲🇬 Malagasy
+</button>
+
+</div></header><div class="container"><!-- =====================================================
+     HERO
+===================================================== --><div class="hero"><h2 class="fr">
+🚀 Bienvenue dans le monde de la programmation
+</h2><h2 class="ml hidden">
+🚀 Tongasoa amin'ny tontolon'ny programmation
+</h2><p class="fr">
+Apprenons comment les ordinateurs exécutent des instructions
+et comment créer nos propres programmes.
+</p><p class="ml hidden">
+Andao hianatra ny fomba hanatanterahan'ny ordinateur
+ny toromarika sy ny fomba hamoronana programme.
+</p><a href="#introduction" class="top-btn">
+📚 Commencer le cours
+</a></div><!-- =====================================================
+     1 INTRODUCTION
+===================================================== --><div class="card" id="introduction"><h2 class="fr">
+📌 1. Qu'est-ce que la programmation ?
+</h2><h2 class="ml hidden">
+📌 1. Inona ny programmation ?
+</h2><p class="fr">
+La programmation est l'activité qui consiste à écrire
+des instructions qu'un ordinateur peut comprendre et exécuter.
+</p><p class="ml hidden">
+Ny programmation dia asa fanoratana toromarika izay
+azon'ny ordinateur takarina sy tanterahiny.
+</p><div class="info"><strong class="fr">Exemple :</strong>
+<strong class="ml hidden">Ohatra :</strong>
+
+<p class="fr">
+Lorsqu'une application calcule 10 + 20, le programme
+contient des instructions permettant d'effectuer ce calcul.
+</p><p class="ml hidden">
+Rehefa manao calcul 10 + 20 ny application iray,
+dia misy toromarika ao amin'ilay programme manao izany kajy izany.
+</p></div></div><!-- =====================================================
+     2 ALGORITHM
+===================================================== --><div class="card"><h2 class="fr">
+📌 2. Algorithme et programmation
+</h2><h2 class="ml hidden">
+📌 2. Algorithme sy programmation
+</h2><p class="fr">
+Avant d'écrire un programme, on peut préparer un
+algorithme. Un algorithme décrit les étapes nécessaires
+pour résoudre un problème.
+</p><p class="ml hidden">
+Alohan'ny hanoratana programme dia afaka manomana
+algorithme isika. Ny algorithme dia mamaritra ireo dingana
+ilaina hamahana olana iray.
+</p><div class="code">Début
+
+Lire A
+Lire B
+S = A + B
+Afficher S
+
+Fin
+
+</div><p class="fr">
+Ici, le programme demande deux nombres, les additionne,
+puis affiche le résultat.
+</p><p class="ml hidden">
+Eto dia maka isa roa ilay programme, manampy azy,
+ary mampiseho ny valiny.
+</p></div><!-- =====================================================
+     3 ENTREE TRAITEMENT SORTIE
+===================================================== --><div class="card"><h2 class="fr">
+📌 3. Entrée → Traitement → Sortie
+</h2><h2 class="ml hidden">
+📌 3. Fidirana → Fikarakarana → Vokatra
+</h2><div class="success"><strong>
+ENTRÉE → TRAITEMENT → SORTIE
+</strong></div><p class="fr">
+<strong>Entrée :</strong> données fournies au programme.
+</p><p class="ml hidden">
+<strong>Fidirana :</strong> angona omena ny programme.
+</p><p class="fr">
+<strong>Traitement :</strong> opérations réalisées par le programme.
+</p><p class="ml hidden">
+<strong>Fikarakarana :</strong> asa ataon'ny programme amin'ireo angona.
+</p><p class="fr">
+<strong>Sortie :</strong> résultat produit.
+</p><p class="ml hidden">
+<strong>Vokatra :</strong> valiny avoakan'ny programme.
+</p></div><!-- =====================================================
+     4 TYPES DE LANGAGES
+===================================================== --><div class="card"><h2 class="fr">
+📌 4. Les principaux langages
+</h2><h2 class="ml hidden">
+📌 4. Ireo langage lehibe
+</h2><div class="table-container"><table><tr><th>Langage</th>
+<th>Utilisation</th>
+<th>Exemple</th></tr><tr>
+<td>Python</td>
+<td>IA, automatisation, science</td>
+<td>print()</td>
+</tr><tr>
+<td>JavaScript</td>
+<td>Web interactif</td>
+<td>console.log()</td>
+</tr><tr>
+<td>C</td>
+<td>Système, embarqué</td>
+<td>printf()</td>
+</tr><tr>
+<td>C++</td>
+<td>Jeux, logiciels, système</td>
+<td>cout</td>
+</tr><tr>
+<td>Java</td>
+<td>Applications, Android, entreprise</td>
+<td>System.out.println()</td>
+</tr><tr>
+<td>PHP</td>
+<td>Sites Web côté serveur</td>
+<td>echo</td>
+</tr><tr>
+<td>SQL</td>
+<td>Bases de données</td>
+<td>SELECT</td>
+</tr></table></div></div><!-- =====================================================
+     5 HTML CSS
+===================================================== --><div class="card"><h2 class="fr">
+📌 5. HTML, CSS et JavaScript
+</h2><h2 class="ml hidden">
+📌 5. HTML, CSS ary JavaScript
+</h2><p class="fr">
+HTML, CSS et JavaScript sont souvent utilisés ensemble
+pour créer des sites Web.
+</p><p class="ml hidden">
+HTML, CSS ary JavaScript dia matetika ampiasaina miaraka
+amin'ny famoronana site Web.
+</p><div class="info"><span class="tag">HTML</span>
+Structure
+
+<br><span class="tag">CSS</span>
+Design
+
+<br><span class="tag">JavaScript</span>
+Interaction
+
+</div><p class="fr">
+HTML structure la page, CSS contrôle son apparence et
+JavaScript permet d'ajouter des comportements interactifs.
+</p><p class="ml hidden">
+HTML no mandamina ny pejy, CSS no manamboatra ny endriny,
+ary JavaScript no manampy interaction.
+</p></div><!-- =====================================================
+     6 NIVEAUX
+===================================================== --><div class="card"><h2 class="fr">
+📌 6. Langages bas niveau et haut niveau
+</h2><h2 class="ml hidden">
+📌 6. Langage bas niveau sy haut niveau
+</h2><h3 class="fr">
+Langage bas niveau
+</h3><h3 class="ml hidden">
+Langage bas niveau
+</h3><p class="fr">
+Il est proche du fonctionnement matériel de l'ordinateur.
+Le langage machine et l'assembleur sont des exemples.
+</p><p class="ml hidden">
+Akaiky kokoa amin'ny fonctionnement an'ny matériel
+ao amin'ny ordinateur izy. Ohatra ny langage machine sy assembleur.
+</p><h3 class="fr">
+Langage haut niveau
+</h3><h3 class="ml hidden">
+Langage haut niveau
+</h3><p class="fr">
+Il est généralement plus facile à lire et à écrire pour l'être humain.
+Python, JavaScript et Java en sont des exemples.
+</p><p class="ml hidden">
+Mora kokoa vakiana sy soratana ho an'ny olona izy.
+Ohatra: Python, JavaScript ary Java.
+</p></div><!-- =====================================================
+     7 COMPILATION
+===================================================== --><div class="card"><h2 class="fr">
+📌 7. Compilateur et interpréteur
+</h2><h2 class="ml hidden">
+📌 7. Compilateur sy interpréteur
+</h2><p class="fr">
+Un compilateur transforme généralement le code source
+en une forme exécutable avant son exécution.
+</p><p class="ml hidden">
+Ny compilateur dia manova ny code source ho endrika
+azo tanterahina alohan'ny execution.
+</p><p class="fr">
+Un interpréteur exécute le programme en utilisant
+une étape d'interprétation pendant l'exécution.
+</p><p class="ml hidden">
+Ny interpréteur kosa dia mandika sy manatanteraka
+ny programme mandritra ny execution.
+</p><div class="warning"><strong class="fr">
+⚠️ Les langages ont des modèles d'exécution différents.
+</strong><strong class="ml hidden">
+⚠️ Samy manana fomba execution mety tsy hitovy ny langage.
+</strong></div></div><!-- =====================================================
+     8 VARIABLE
+===================================================== --><div class="card"><h2 class="fr">
+📌 8. Les variables
+</h2><h2 class="ml hidden">
+📌 8. Variable
+</h2><p class="fr">
+Une variable est un espace nommé permettant de stocker
+une valeur utilisée par un programme.
+</p><p class="ml hidden">
+Ny variable dia toerana nomena anarana itehirizana
+valeur ampiasain'ny programme.
+</p><div class="code">age = 18
+
+nom = "Tahiry"
+
+prix = 2500
+
+</div></div><!-- =====================================================
+     9 TYPES
+===================================================== --><div class="card"><h2 class="fr">
+📌 9. Les types de données
+</h2><h2 class="ml hidden">
+📌 9. Karazana données
+</h2><div class="table-container"><table><tr>
+<th>Type</th>
+<th>Exemple</th>
+</tr><tr>
+<td>Entier</td>
+<td>25</td>
+</tr><tr>
+<td>Décimal</td>
+<td>12.5</td>
+</tr><tr>
+<td>Chaîne</td>
+<td>"Bonjour"</td>
+</tr><tr>
+<td>Booléen</td>
+<td>True / False</td>
+</tr></table></div></div><!-- =====================================================
+     10 OPERATEURS
+===================================================== --><div class="card"><h2 class="fr">
+📌 10. Les opérateurs
+</h2><h2 class="ml hidden">
+📌 10. Opérateurs
+</h2><div class="code">a + b
+a - b
+a * b
+a / b
+a % b
+
+</div><p class="fr">
+Ils permettent d'effectuer des opérations mathématiques
+ou logiques.
+</p><p class="ml hidden">
+Ireo no ampiasaina hanaovana calcul na opération logique.
+</p></div><!-- =====================================================
+     11 CONDITION
+===================================================== --><div class="card"><h2 class="fr">
+📌 11. Les conditions
+</h2><h2 class="ml hidden">
+📌 11. Condition
+</h2><p class="fr">
+Une condition permet au programme de prendre une décision.
+</p><p class="ml hidden">
+Ny condition dia ahafahan'ny programme mandray fanapahan-kevitra.
+</p><div class="code">age = 20
+
+if age >= 18:
+print("Adulte")
+else:
+print("Mineur")
+
+</div></div><!-- =====================================================
+     12 BOUCLE
+===================================================== --><div class="card"><h2 class="fr">
+📌 12. Les boucles
+</h2><h2 class="ml hidden">
+📌 12. Boucle
+</h2><p class="fr">
+Une boucle permet de répéter une ou plusieurs instructions.
+</p><p class="ml hidden">
+Ny boucle dia mamela ny programme hamerina instruction iray
+na maromaro.
+</p><div class="code">for i in range(1, 6):
+
+print(i)
+
+</div></div><!-- =====================================================
+     13 FONCTION
+===================================================== --><div class="card"><h2 class="fr">
+📌 13. Les fonctions
+</h2><h2 class="ml hidden">
+📌 13. Fonction
+</h2><p class="fr">
+Une fonction est un bloc de code conçu pour réaliser
+une tâche précise.
+</p><p class="ml hidden">
+Ny fonction dia bloc de code natao hanao asa manokana.
+</p><div class="code">def saluer():
+
+print("Bonjour")
+
+saluer()
+
+</div></div><!-- =====================================================
+     14 TABLEAU
+===================================================== --><div class="card"><h2 class="fr">
+📌 14. Les tableaux / listes
+</h2><h2 class="ml hidden">
+📌 14. Tableau / Liste
+</h2><div class="code">noms = [
+"Jean",
+"Marie",
+"Paul"
+]
+
+print(noms[0])
+
+</div><p class="fr">
+Une liste permet de stocker plusieurs valeurs dans une même structure.
+</p><p class="ml hidden">
+Ny liste dia ahafahana mitahiry valeur maromaro ao anaty structure iray.
+</p></div><!-- =====================================================
+     15 INPUT OUTPUT
+===================================================== --><div class="card"><h2 class="fr">
+📌 15. Entrée et sortie
+</h2><h2 class="ml hidden">
+📌 15. Fidirana sy vokatra
+</h2><div class="code">nom = input("Votre nom : ")
+
+print("Bonjour " + nom)
+
+</div><p class="fr">
+Le programme demande une information à l'utilisateur,
+puis affiche un résultat.
+</p><p class="ml hidden">
+Mangataka information amin'ny utilisateur ilay programme,
+avy eo mampiseho valiny.
+</p></div><!-- =====================================================
+     16 DEBUGGING
+===================================================== --><div class="card"><h2 class="fr">
+🐞 16. Les erreurs et le debugging
+</h2><h2 class="ml hidden">
+🐞 16. Erreur sy debugging
+</h2><p class="fr">
+Lorsqu'un programme ne fonctionne pas comme prévu,
+le programmeur recherche l'erreur et la corrige.
+Cette opération est appelée <strong>debugging</strong>.
+</p><p class="ml hidden">
+Rehefa tsy mandeha araka ny tokony ho izy ny programme,
+dia mitady ny erreur ny programmeur ary manitsy izany.
+Izany no atao hoe <strong>debugging</strong>.
+</p><div class="warning"><strong class="fr">
+Exemple : une parenthèse oubliée peut provoquer une erreur.
+</strong><strong class="ml hidden">
+Ohatra : mety hiteraka erreur ny parenthèse adino.
+</strong></div></div><!-- =====================================================
+     17 OUTILS
+===================================================== --><div class="card"><h2 class="fr">
+🛠️ 17. Outils pour programmer
+</h2><h2 class="ml hidden">
+🛠️ 17. Fitaovana hanaovana programmation
+</h2><ul class="fr"><li>Visual Studio Code</li>
+<li>Notepad++</li>
+<li>PyCharm</li>
+<li>Android Studio</li>
+<li>Navigateurs Web</li>
+<li>Terminal / CMD</li></ul><ul class="ml hidden"><li>Visual Studio Code</li>
+<li>Notepad++</li>
+<li>PyCharm</li>
+<li>Android Studio</li>
+<li>Navigateur Web</li>
+<li>Terminal / CMD</li></ul></div><!-- =====================================================
+     18 SECURITE
+===================================================== --><div class="card"><h2 class="fr">
+🔐 18. Programmation et sécurité
+</h2><h2 class="ml hidden">
+🔐 18. Programmation sy sécurité
+</h2><p class="fr">
+Un programme doit être conçu en tenant compte de la sécurité.
+Il faut notamment valider les données reçues, protéger les
+informations sensibles et éviter les erreurs dangereuses.
+</p><p class="ml hidden">
+Tokony hojerena ihany koa ny sécurité rehefa manao programme.
+Tokony hojerena ny données miditra, harovana ny information
+manokana ary ialana ny erreur mety hampidi-doza.
+</p></div><!-- =====================================================
+     19 IA
+===================================================== --><div class="card"><h2 class="fr">
+🤖 19. Programmation et intelligence artificielle
+</h2><h2 class="ml hidden">
+🤖 19. Programmation sy intelligence artificielle
+</h2><p class="fr">
+La programmation est utilisée pour développer de nombreux
+systèmes d'intelligence artificielle.
+</p><p class="ml hidden">
+Ny programmation dia ampiasaina amin'ny famoronana
+rafitra maro mifandray amin'ny intelligence artificielle.
+</p><div class="info"><strong class="fr">
+Exemple : Python est très utilisé dans l'IA et la science des données.
+</strong><strong class="ml hidden">
+Ohatra : Python dia tena ampiasaina amin'ny IA sy data science.
+</strong></div></div><!-- =====================================================
+     20 PROJET
+===================================================== --><div class="card"><h2 class="fr">
+🚀 20. Mini-projet
+</h2><h2 class="ml hidden">
+🚀 20. Mini-projet
+</h2><p class="fr">
+Créer un programme qui demande le nom et l'âge d'un utilisateur
+et affiche un message différent selon son âge.
+</p><p class="ml hidden">
+Mamorona programme mangataka anarana sy taona,
+ary mampiseho message miova arakaraka ny taona.
+</p><div class="code">nom = input("Nom : ")
+
+age = int(input("Age : "))
+
+if age >= 18:
+
+print("Bonjour " + nom)
+print("Vous êtes majeur.")
+
+else:
+
+print("Bonjour " + nom)
+print("Vous êtes mineur.")
+
+</div></div><!-- =====================================================
+     21 EXERCICES
+===================================================== --><div class="card"><h2 class="fr">
+🎯 21. Exercices pratiques
+</h2><h2 class="ml hidden">
+🎯 21. Fanazaran-tena
+</h2><ol class="fr"><li>Créer une variable contenant votre nom.</li><li>Créer une variable contenant votre âge.</li><li>Calculer 15 + 25.</li><li>Vérifier si un nombre est pair ou impair.</li><li>Afficher les nombres de 1 à 10.</li><li>Créer une fonction qui affiche "Bonjour".</li><li>Créer une liste contenant 5 noms.</li></ol><ol class="ml hidden"><li>Mamorona variable misy ny anaranao.</li><li>Mamorona variable misy ny taonanao.</li><li>Raiso ny kajy 15 + 25.</li><li>Jereo raha pair na impair ny isa iray.</li><li>Asehoy ny isa 1 hatramin'ny 10.</li><li>Mamorona fonction mampiseho "Bonjour".</li><li>Mamorona liste misy anarana 5.</li></ol></div><!-- =====================================================
+     22 QUIZ
+===================================================== --><div class="card"><h2>
+🧠 Quiz final
+</h2><div class="quiz"><div class="question"><p>
+<strong>1. Que signifie une variable ?</strong>
+</p><label>
+<input type="radio" name="q1" value="a">
+Une image
+</label><label>
+<input type="radio" name="q1" value="b">
+Un espace permettant de stocker une valeur
+</label><label>
+<input type="radio" name="q1" value="c">
+Un ordinateur
+</label></div><div class="question"><p>
+<strong>2. Quel langage est très utilisé en IA ?</strong>
+</p><label>
+<input type="radio" name="q2" value="a">
+Python
+</label><label>
+<input type="radio" name="q2" value="b">
+HTML
+</label><label>
+<input type="radio" name="q2" value="c">
+CSS
+</label></div><div class="question"><p>
+<strong>3. Quelle structure permet de répéter des instructions ?</strong>
+</p><label>
+<input type="radio" name="q3" value="a">
+Boucle
+</label><label>
+<input type="radio" name="q3" value="b">
+Image
+</label><label>
+<input type="radio" name="q3" value="c">
+Titre
+</label></div><div class="question"><p>
+<strong>4. À quoi sert une condition ?</strong>
+</p><label>
+<input type="radio" name="q4" value="a">
+Décorer la page
+</label><label>
+<input type="radio" name="q4" value="b">
+Prendre une décision
+</label><label>
+<input type="radio" name="q4" value="c">
+Éteindre l'ordinateur
+</label></div><div class="question"><p>
+<strong>5. Quel outil peut être utilisé pour écrire du code ?</strong>
+</p><label>
+<input type="radio" name="q5" value="a">
+Visual Studio Code
+</label><label>
+<input type="radio" name="q5" value="b">
+Calculatrice uniquement
+</label><label>
+<input type="radio" name="q5" value="c">
+Paint uniquement
+</label></div><button class="quiz-btn" onclick="corrigerQuiz()">
+✅ Corriger le quiz
+</button><div id="quizResult"></div></div></div><!-- =====================================================
+     RETOUR
+===================================================== --><div style="text-align:center;margin:30px 0;"><a href="#top" class="top-btn">
+⬆️ Retour en haut
+</a></div></div><!-- =====================================================
+     FOOTER
+===================================================== --><footer><strong>
+💻 Mr Tahiry - Informatique 👨‍🏫
+</strong><br><br>
+
+<span class="fr">
+Cours de programmation • 2026
+</span><span class="ml hidden">
+Lesona programmation • 2026
+</span></footer><script>
+
+/* =====================================================
+   LANGUAGE
+===================================================== */
+
+function setLang(lang,button){
+
+    const fr =
+        document.querySelectorAll(".fr");
+
+    const ml =
+        document.querySelectorAll(".ml");
+
+
+    if(lang === "fr"){
+
+        fr.forEach(element=>{
+            element.classList.remove("hidden");
+        });
+
+        ml.forEach(element=>{
+            element.classList.add("hidden");
+        });
+
+    }
+
+    else{
+
+        fr.forEach(element=>{
+            element.classList.add("hidden");
+        });
+
+        ml.forEach(element=>{
+            element.classList.remove("hidden");
+        });
+
+    }
+
+
+    document
+        .querySelectorAll(".lang-btn")
+        .forEach(btn=>{
+            btn.classList.remove("active");
+        });
+
+
+    button.classList.add("active");
+
+}
+
+
+/* =====================================================
+   QUIZ
+===================================================== */
+
+function corrigerQuiz(){
+
+    let score = 0;
+
+
+    let q1 =
+        document.querySelector(
+            'input[name="q1"]:checked'
+        );
+
+    let q2 =
+        document.querySelector(
+            'input[name="q2"]:checked'
+        );
+
+    let q3 =
+        document.querySelector(
+            'input[name="q3"]:checked'
+        );
+
+    let q4 =
+        document.querySelector(
+            'input[name="q4"]:checked'
+        );
+
+    let q5 =
+        document.querySelector(
+            'input[name="q5"]:checked'
+        );
+
+
+    if(q1 && q1.value === "b")
+        score++;
+
+
+    if(q2 && q2.value === "a")
+        score++;
+
+
+    if(q3 && q3.value === "a")
+        score++;
+
+
+    if(q4 && q4.value === "b")
+        score++;
+
+
+    if(q5 && q5.value === "a")
+        score++;
+
+
+    let result =
+        document.getElementById("quizResult");
+
+
+    let percentage =
+        (score / 5) * 100;
+
+
+    if(score === 5){
+
+        result.innerHTML =
+        "🎉 Excellent ! Score : "
+        + score
+        + "/5 — "
+        + percentage
+        + "%";
+
+    }
+
+    else if(score >= 3){
+
+        result.innerHTML =
+        "👍 Bien ! Score : "
+        + score
+        + "/5 — "
+        + percentage
+        + "%";
+
+    }
+
+    else{
+
+        result.innerHTML =
+        "📚 Il faut encore réviser. Score : "
+        + score
+        + "/5 — "
+        + percentage
+        + "%";
+
+    }
+
+}
+
+</script></body></html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Informatique et Information</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f4f6f9;
+}
+
+/* HEADER */
+header {
+  background: #2c3e50;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+}
+
+.lang-btn {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+}
+
+button {
+  padding: 5px 10px;
+  margin-left: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.fr { background: #3498db; color: white; }
+.ml { background: #27ae60; color: white; }
+
+/* CONTENT */
+.container {
+  padding: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+h2 {
+  cursor: pointer;
+}
+
+.content {
+  display: none;
+  margin-top: 10px;
+}
+
+</style>
+
+<script>
+function setLang(lang) {
+  document.querySelectorAll('[data-fr]').forEach(el => {
+    el.innerHTML = el.getAttribute('data-' + lang);
+  });
+}
+
+function toggleContent(id) {
+  let el = document.getElementById(id);
+  el.style.display = (el.style.display === "block") ? "none" : "block";
+}
+</script>
+
+</head>
+
+<body>
+
+<header>
+  <h1 data-fr="Informatique et Information"
+      data-ml="Informatika sy Fampahalalana">
+      Informatique et Information
+  </h1>
+
+  <div class="lang-btn">
+    <button class="fr" onclick="setLang('fr')">FR</button>
+    <button class="ml" onclick="setLang('ml')">ML</button>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- LEÇON 1 -->
+  <div class="card">
+    <h2 onclick="toggleContent('l1')"
+        data-fr="💡 Leçon 1 : Informatique"
+        data-ml="💡 Lesona 1 : Informatika">
+        💡 Leçon 1
+    </h2>
+
+    <div id="l1" class="content">
+      <p data-fr="L’informatique est la science du traitement automatique de l’information."
+         data-ml="Ny informatika dia siansa mikasika ny fanodinana mandeha ho azy ny fampahalalana.">
+      </p>
+
+      <p data-fr="Elle utilise les ordinateurs pour stocker, traiter et transmettre les données."
+         data-ml="Mampiasa ordinatera izy mba hitahirizana, hanodinana ary handefasana angona.">
+      </p>
+    </div>
+  </div>
+
+  <!-- LEÇON 2 -->
+  <div class="card">
+    <h2 onclick="toggleContent('l2')"
+        data-fr="📊 Leçon 2 : Information"
+        data-ml="📊 Lesona 2 : Fampahalalana">
+    </h2>
+
+    <div id="l2" class="content">
+      <p data-fr="Une information est un ensemble de données organisées."
+         data-ml="Ny fampahalalana dia angona voalamina.">
+      </p>
+
+      <p data-fr="Exemple : texte, image, vidéo, son."
+         data-ml="Ohatra : lahatsoratra, sary, horonan-tsary, feo.">
+      </p>
+    </div>
+  </div>
+
+  <!-- LEÇON 3 -->
+  <div class="card">
+    <h2 onclick="toggleContent('l3')"
+        data-fr="🖥️ Leçon 3 : Ordinateur"
+        data-ml="🖥️ Lesona 3 : Ordinatera">
+    </h2>
+
+    <div id="l3" class="content">
+      <p data-fr="Un ordinateur est une machine électronique qui traite les informations."
+         data-ml="Ny ordinatera dia milina elektronika mandrindra ny fampahalalana.">
+      </p>
+
+      <p data-fr="Il comprend : unité centrale, écran, clavier, souris."
+         data-ml="Ahitana : unité centrale, écran, clavier, souris.">
+      </p>
+    </div>
+  </div>
+
+  <!-- LEÇON 4 -->
+  <div class="card">
+    <h2 onclick="toggleContent('l4')"
+        data-fr="🌐 Leçon 4 : Internet"
+        data-ml="🌐 Lesona 4 : Internet">
+    </h2>
+
+    <div id="l4" class="content">
+      <p data-fr="Internet est un réseau mondial permettant de communiquer et partager des informations."
+         data-ml="Internet dia tambajotra maneran-tany ahafahana mifandray sy mizara vaovao.">
+      </p>
+
+      <p data-fr="Exemples : navigation, email, réseaux sociaux."
+         data-ml="Ohatra : fitetezana, mailaka, tambajotra sosialy.">
+      </p>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

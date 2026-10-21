@@ -1,0 +1,709 @@
+<!DOCTYPE html><hhtml lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Gestion des élèves | InfoPro</title><style>
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f1f5f9;
+    color:#172033;
+}
+
+header{
+    background:linear-gradient(135deg,#0d47a1,#1976d2);
+    color:white;
+    padding:18px;
+    text-align:center;
+}
+
+header h1{
+    margin:0 0 6px;
+}
+
+nav{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-top:15px;
+}
+
+nav a,nav button{
+    border:0;
+    padding:10px 14px;
+    border-radius:8px;
+    background:white;
+    color:#0d47a1;
+    text-decoration:none;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.container{
+    max-width:1400px;
+    margin:auto;
+    padding:20px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    margin-bottom:20px;
+    border-radius:14px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.stat{
+    padding:18px;
+    border-radius:12px;
+    background:#e3f2fd;
+    text-align:center;
+}
+
+.stat strong{
+    display:block;
+    font-size:28px;
+    color:#0d47a1;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+}
+
+input,select,textarea{
+    width:100%;
+    padding:11px;
+    border:1px solid #cbd5e1;
+    border-radius:8px;
+    font-size:14px;
+}
+
+textarea{
+    min-height:70px;
+}
+
+label{
+    font-weight:bold;
+    display:block;
+    margin-bottom:5px;
+}
+
+.full{
+    grid-column:1/-1;
+}
+
+.buttons{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:15px;
+}
+
+button{
+    border:0;
+    padding:11px 16px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.btn-primary{background:#1976d2;color:white}
+.btn-success{background:#2e7d32;color:white}
+.btn-warning{background:#f9a825;color:white}
+.btn-danger{background:#c62828;color:white}
+.btn-dark{background:#263238;color:white}
+
+.message{
+    margin-top:12px;
+    padding:10px;
+    background:#e8f5e9;
+    color:#1b5e20;
+    border-radius:8px;
+    display:none;
+}
+
+.search-box{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:10px;
+}
+
+.table-wrapper{
+    overflow:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:1100px;
+}
+
+th,td{
+    border:1px solid #ddd;
+    padding:8px;
+    text-align:left;
+}
+
+th{
+    background:#0d47a1;
+    color:white;
+}
+
+tr:nth-child(even){
+    background:#f8fafc;
+}
+
+.action{
+    display:flex;
+    gap:5px;
+}
+
+.action button{
+    padding:7px 9px;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    color:#64748b;
+}
+
+@media(max-width:900px){
+    .grid,.form-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .search-box{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:600px){
+    .grid,.form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .container{
+        padding:10px;
+    }
+}
+
+@media print{
+    header,
+    nav,
+    .form-card,
+    .search-card,
+    .buttons,
+    footer,
+    .no-print{
+        display:none!important;
+    }
+
+    body{
+        background:white;
+    }
+
+    .container{
+        max-width:none;
+        padding:0;
+    }
+
+    .card{
+        box-shadow:none;
+        border:0;
+    }
+
+    table{
+        font-size:9px;
+    }
+
+    th,td{
+        padding:4px;
+    }
+
+    @page{
+        size:A4 landscape;
+        margin:7mm;
+    }
+}
+</style></head><body><header>
+    <h1>👨‍🎓 Gestion des élèves</h1>
+    <div>InfoPro | Gestion pédagogique</div><nav>
+    <a href="index.php">🏠 Accueil</a>
+    <a href="cahier-de-note.html">📊 Cahier de notes</a>
+    <a href="plan-classe.htm">🏫 Plan de classe</a>
+</nav>
+
+</header><div class="container"><div class="grid">
+    <div class="stat">
+        <strong id="total">0</strong>
+        Total élèves
+    </div><div class="stat">
+    <strong id="garcons">0</strong>
+    Garçons
+</div>
+
+<div class="stat">
+    <strong id="filles">0</strong>
+    Filles
+</div>
+
+<div class="stat">
+    <strong id="classes">0</strong>
+    Classes
+</div>
+
+</div><div class="card form-card"><h2>➕ Ajouter / Modifier un élève</h2><div class="form-grid"><div>
+<label>Matricule</label>
+<input id="matricule">
+</div><div>
+<label>Nom</label>
+<input id="nom">
+</div><div>
+<label>Prénom</label>
+<input id="prenom">
+</div><div>
+<label>Sexe</label>
+<select id="sexe">
+<option value="">-- Choisir --</option>
+<option value="M">Garçon</option>
+<option value="F">Fille</option>
+</select>
+</div><div>
+<label>Date de naissance</label>
+<input type="date" id="naissance">
+</div><div>
+<label>Classe</label>
+<select id="classe">
+<option value="">-- Choisir --</option>
+<option>6èmeI</option>
+<option>6èmeII</option>
+<option>6èmeIII</option>
+<option>5èmeI</option>
+<option>5èmeII</option>
+<option>4èmeI</option>
+<option>4èmeII</option>
+<option>3èmeI</option>
+<option>3èmeII</option>
+<option>2ndI</option>
+<option>2ndII</option>
+<option>1èreL</option>
+<option>1èreS</option>
+<option>TL</option>
+<option>TS</option>
+<option>7èmeI</option>
+<option>7èmeII</option>
+<option>8èmeI</option>
+<option>8èmeII</option>
+<option>9èmeI</option>
+<option>9èmeII</option>
+<option>10èmeI</option>
+<option>10èmeII</option>
+<option>11èmeI</option>
+<option>11èmeII</option>
+<option>12èmeI</option>
+<option>12èmeII</option>
+<option>MaterneleI</option>
+<option>MaterneleII</option>
+<option>7èmeMLV</option>
+<option>8èmeMLV</option>
+<option>9èmeMLV</option>
+<option>10èmeMLV</option>
+<option>11èmeMLV</option>
+<option>12èmeMLV</option>
+<option>MaterneleMLV</option> <</select>
+</div><div>
+<label>Responsable</label>
+<input id="responsable">
+</div><div>
+<label>Téléphone</label>
+<input id="telephone">
+</div><div>
+<label>Email</label>
+<input id="email">
+</div><div>
+<label>Adresse</label>
+<input id="adresse">
+</div><div>
+<label>Date inscription</label>
+<input type="date" id="inscription">
+</div><div>
+<label>Statut</label>
+<select id="statut">
+<option>Actif</option>
+<option>Inactif</option>
+</select>
+</div><div class="full">
+<label>Observation</label>
+<textarea id="observation"></textarea>
+</div></div><div class="buttons">
+<button class="btn-primary" onclick="enregistrerEleve()">💾 Enregistrer</button>
+<button class="btn-warning" onclick="viderFormulaire()">🧹 Nouveau</button>
+</div><div id="message" class="message"></div></div><div class="card search-card"><h2>🔎 Rechercher</h2><div class="search-box"><input
+id="recherche"
+placeholder="Nom, prénom ou matricule..."
+oninput="afficherEleves()">
+
+<select id="filtreClasse" onchange="afficherEleves()">
+<option value="">Toutes les classes</option>
+<option>6èmeI</option>
+<option>6èmeII</option>
+<option>6èmeIII</option>
+<option>5èmeI</option>
+<option>5èmeII</option>
+<option>4èmeI</option>
+<option>4èmeII</option>
+<option>3èmeI</option>
+<option>3èmeII</option>
+<option>2ndI</option>
+<option>2ndII</option>
+<option>1èreL</option>
+<option>1èreS</option>
+<option>TL</option>
+<option>TS</option>
+<option>7èmeI</option>
+<option>7èmeII</option>
+<option>8èmeI</option>
+<option>8èmeII</option>
+<option>9èmeI</option>
+<option>9èmeII</option>
+<option>10èmeI</option>
+<option>10èmeII</option>
+<option>11èmeI</option>
+<option>11èmeII</option>
+<option>12èmeI</option>
+<option>12èmeII</option>
+<option>MaterneleI</option>
+<option>MaterneleII</option>
+<option>7èmeMLV</option>
+<option>8èmeMLV</option>
+<option>9èmeMLV</option>
+<option>10èmeMLV</option>
+<option>11èmeMLV</option>
+<option>12èmeMLV</option>
+<option>MaterneleMLV</option> 
+</select><select id="filtreSexe" onchange="afficherEleves()">
+<option value="">Tous</option>
+<option value="M">Garçons</option>
+<option value="F">Filles</option>
+</select></div><div class="buttons">
+<button class="btn-success" onclick="window.print()">🖨️ Imprimer / PDF</button>
+<button class="btn-dark" onclick="exporterJSON()">⬇️ Exporter JSON</button>
+<label class="btn-warning" style="display:inline-block;cursor:pointer">
+⬆️ Importer JSON
+<input type="file" accept=".json" onchange="importerJSON(event)" hidden>
+</label>
+</div></div><div class="card"><h2>📋 Liste des élèves</h2><div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>N°</th>
+<th>Matricule</th>
+<th>Nom</th>
+<th>Prénom</th>
+<th>Sexe</th>
+<th>Naissance</th>
+<th>Classe</th>
+<th>Responsable</th>
+<th>Téléphone</th>
+<th>Statut</th>
+<th class="no-print">Action</th>
+</tr>
+</thead><tbody id="liste"></tbody></table></div></div></div><footer>
+💻 Mr Tahiry - Informatique 👨‍🏫
+</footer><script>
+
+let eleves=[];
+let indexModification=-1;
+
+try{
+    eleves=JSON.parse(localStorage.getItem("infoProEleves")) || [];
+}catch(e){
+    eleves=[];
+}
+
+function sauvegarder(){
+
+    localStorage.setItem(
+        "infoProEleves",
+        JSON.stringify(eleves)
+    );
+
+    afficherEleves();
+
+    message("✅ Élève enregistré. 💾 Données sauvegardées sur cet appareil.");
+}
+
+function message(txt){
+
+    const m=document.getElementById("message");
+
+    m.textContent=txt;
+    m.style.display="block";
+
+    setTimeout(()=>{
+        m.style.display="none";
+    },3500);
+}
+
+function valeur(id){
+    return document.getElementById(id).value.trim();
+}
+
+function enregistrerEleve(){
+
+    const nom=valeur("nom");
+    const prenom=valeur("prenom");
+    const classe=valeur("classe");
+
+    if(!nom || !prenom || !classe){
+        alert("Veuillez remplir au minimum : Nom, Prénom et Classe.");
+        return;
+    }
+
+    const objet={
+        matricule:valeur("matricule"),
+        nom,
+        prenom,
+        sexe:valeur("sexe"),
+        naissance:valeur("naissance"),
+        classe,
+        responsable:valeur("responsable"),
+        telephone:valeur("telephone"),
+        email:valeur("email"),
+        adresse:valeur("adresse"),
+        inscription:valeur("inscription"),
+        statut:valeur("statut"),
+        observation:valeur("observation")
+    };
+
+    if(indexModification===-1){
+        eleves.push(objet);
+    }else{
+        eleves[indexModification]=objet;
+        indexModification=-1;
+    }
+
+    sauvegarder();
+    viderFormulaire();
+}
+
+function viderFormulaire(){
+
+    document.querySelectorAll(
+        ".form-card input,.form-card textarea"
+    ).forEach(x=>x.value="");
+
+    document.getElementById("sexe").value="";
+    document.getElementById("classe").value="";
+    document.getElementById("statut").value="Actif";
+
+    indexModification=-1;
+}
+
+function securiser(txt){
+
+    return String(txt ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+}
+
+function afficherEleves(){
+
+    const recherche=
+        valeur("recherche").toLowerCase();
+
+    const filtreClasse=
+        document.getElementById("filtreClasse").value;
+
+    const filtreSexe=
+        document.getElementById("filtreSexe").value;
+
+    const tbody=document.getElementById("liste");
+
+    tbody.innerHTML="";
+
+    let compteur=0;
+
+    eleves.forEach((e,i)=>{
+
+        const texte=(
+            e.nom+" "+
+            e.prenom+" "+
+            e.matricule
+        ).toLowerCase();
+
+        if(recherche && !texte.includes(recherche))
+            return;
+
+        if(filtreClasse && e.classe!==filtreClasse)
+            return;
+
+        if(filtreSexe && e.sexe!==filtreSexe)
+            return;
+
+        compteur++;
+
+        const tr=document.createElement("tr");
+
+        tr.innerHTML=`
+        <td>${compteur}</td>
+        <td>${securiser(e.matricule)}</td>
+        <td>${securiser(e.nom)}</td>
+        <td>${securiser(e.prenom)}</td>
+        <td>${e.sexe==="M"?"Garçon":e.sexe==="F"?"Fille":""}</td>
+        <td>${securiser(e.naissance)}</td>
+        <td>${securiser(e.classe)}</td>
+        <td>${securiser(e.responsable)}</td>
+        <td>${securiser(e.telephone)}</td>
+        <td>${securiser(e.statut)}</td>
+        <td class="action no-print">
+            <button class="btn-warning"
+            onclick="modifierEleve(${i})">✏️</button>
+
+            <button class="btn-danger"
+            onclick="supprimerEleve(${i})">🗑️</button>
+        </td>
+        `;
+
+        tbody.appendChild(tr);
+    });
+
+    actualiserStats();
+}
+
+function modifierEleve(i){
+
+    const e=eleves[i];
+
+    [
+        "matricule",
+        "nom",
+        "prenom",
+        "sexe",
+        "naissance",
+        "classe",
+        "responsable",
+        "telephone",
+        "email",
+        "adresse",
+        "inscription",
+        "statut",
+        "observation"
+    ].forEach(id=>{
+        document.getElementById(id).value=e[id] || "";
+    });
+
+    indexModification=i;
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+function supprimerEleve(i){
+
+    if(!confirm(
+        "Voulez-vous vraiment supprimer cet élève ?"
+    )) return;
+
+    eleves.splice(i,1);
+
+    sauvegarder();
+
+    message("🗑️ Élève supprimé.");
+}
+
+function actualiserStats(){
+
+    document.getElementById("total").textContent=
+        eleves.length;
+
+    document.getElementById("garcons").textContent=
+        eleves.filter(e=>e.sexe==="M").length;
+
+    document.getElementById("filles").textContent=
+        eleves.filter(e=>e.sexe==="F").length;
+
+    document.getElementById("classes").textContent=
+        new Set(
+            eleves
+            .map(e=>e.classe)
+            .filter(Boolean)
+        ).size;
+}
+
+function exporterJSON(){
+
+    const blob=new Blob(
+        [JSON.stringify(eleves,null,2)],
+        {type:"application/json"}
+    );
+
+    const url=URL.createObjectURL(blob);
+
+    const a=document.createElement("a");
+
+    a.href=url;
+    a.download="liste-eleves-InfoPro.json";
+
+    a.click();
+
+    URL.revokeObjectURL(url);
+}
+
+function importerJSON(event){
+
+    const fichier=event.target.files[0];
+
+    if(!fichier)return;
+
+    const reader=new FileReader();
+
+    reader.onload=function(){
+
+        try{
+
+            const donnees=
+                JSON.parse(reader.result);
+
+            if(!Array.isArray(donnees)){
+                throw new Error();
+            }
+
+            eleves=donnees;
+
+            sauvegarder();
+
+            message(
+                "✅ Liste importée avec succès."
+            );
+
+        }catch(e){
+
+            alert(
+                "❌ Fichier JSON invalide."
+            );
+        }
+    };
+
+    reader.readAsText(fichier);
+}
+
+afficherEleves();
+
+</script></body>
+</html>

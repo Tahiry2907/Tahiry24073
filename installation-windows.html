@@ -1,0 +1,262 @@
+<!DOCTYPE html><html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07172e">
+<title>Installation Windows PRO++ | InfoPro</title>
+<style>
+*{box-sizing:border-box}
+:root{--bg:#07172e;--card:#102b49;--blue:#1685df;--teal:#1bd5bb;--text:#edf6ff;--muted:#bacbde;--border:rgba(255,255,255,.13)}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#061426,#0b2948,#064653);color:var(--text);line-height:1.65}
+header{text-align:center;padding:24px 12px;background:#061426;border-bottom:1px solid var(--border)}
+.logo{font-size:29px;color:var(--teal);font-weight:bold}
+header p{color:var(--muted);margin:5px}
+h1{font-size:clamp(24px,5vw,36px);margin:8px 0}
+h2{font-size:23px;margin-top:0}
+h3{margin-top:0}
+button,input,select{font:inherit}
+.lang{display:flex;justify-content:center;gap:8px;margin-top:14px}
+button{cursor:pointer}
+.lang button,.btn{border:0;border-radius:9px;padding:10px 14px;background:var(--blue);color:white;font-weight:bold}
+.lang button.active{background:var(--teal);color:#062338}
+main{width:min(1100px,94%);margin:22px auto}
+.panel,.card,.warning{background:rgba(16,43,73,.94);border:1px solid var(--border);border-radius:15px;padding:18px;margin-bottom:17px}
+.muted{color:var(--muted)}
+.warning{border-left:5px solid #ffb84a;background:rgba(105,68,12,.22)}
+.warning strong{color:#ffd27d}
+.search{width:100%;padding:13px;border-radius:9px;border:1px solid var(--border);background:#07172e;color:white;margin:8px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:15px}
+.card{margin:0;display:flex;flex-direction:column}
+.card .btn{margin-top:auto}
+.icon{font-size:34px}
+.tag{display:inline-block;background:rgba(27,213,187,.14);color:#6df4df;border-radius:20px;padding:4px 9px;font-size:12px;margin:5px 0}
+.steps{display:none;border-top:1px solid var(--border);margin-top:14px;padding-top:12px}
+.steps.open{display:block}
+.steps li{margin:0 0 10px}
+.card button{margin-top:12px}
+.hidden{display:none!important}
+.keytable{width:100%;border-collapse:collapse}
+.keytable th,.keytable td{padding:10px;border:1px solid var(--border);text-align:left}
+.keytable th{background:#07172e}
+.small{font-size:14px}
+footer{text-align:center;color:var(--muted);padding:24px 10px;border-top:1px solid var(--border)}
+@media(max-width:500px){.panel,.card,.warning{padding:14px}.keytable th,.keytable td{padding:7px;font-size:14px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">💻 InfoPro</div>
+  <h1 data-fr="Installation Windows 10 / 11 PRO++" data-ml="Fametrahana Windows 10 / 11 PRO++">Installation Windows 10 / 11 PRO++</h1>
+  <p data-fr="Guide pratique d'installation et de dépannage" data-ml="Torolalana azo ampiharina amin'ny fametrahana sy fanamboarana olana">Guide pratique d'installation et de dépannage</p>
+  <div class="lang">
+    <button id="frBtn" class="active" onclick="setLang('fr')">🇫🇷 Français</button>
+    <button id="mlBtn" onclick="setLang('ml')">🇲🇬 Malagasy</button>
+  </div>
+</header><main>
+<section class="panel">
+  <h2 data-fr="🎯 Objectif de cette leçon" data-ml="🎯 Tanjon'ity lesona ity">🎯 Objectif de cette leçon</h2>
+  <p data-fr="Apprendre à préparer l'installation de Windows, démarrer depuis une clé USB, comprendre les étapes de l'installateur et diagnostiquer les erreurs courantes."
+     data-ml="Hianatra manomana fametrahana Windows, mandefa solosaina amin'ny clé USB, mahafantatra ny dingana ao amin'ny installateur ary mamantatra ireo olana mahazatra.">Apprendre à préparer l'installation de Windows, démarrer depuis une clé USB, comprendre les étapes de l'installateur et diagnostiquer les erreurs courantes.</p>
+</section><section class="warning">
+  <strong data-fr="⚠️ Important avant de commencer" data-ml="⚠️ Zava-dehibe alohan'ny hanombohana">⚠️ Important avant de commencer</strong>
+  <p data-fr="Une installation propre peut supprimer les fichiers et les partitions du disque sélectionné. Sauvegardez vos documents et vérifiez soigneusement le disque avant toute suppression ou tout formatage. Utilisez une licence valide et des fichiers d'installation provenant de Microsoft."
+     data-ml="Mety hamafa rakitra sy partition ao amin'ny disque voafidy ny fametrahana madio. Tehirizo aloha ny antontan-taratasy ary hamarino tsara ilay disque alohan'ny hamafana na hanaovana format. Ampiasao licence ara-dalàna sy rakitra avy amin'i Microsoft.">Une installation propre peut supprimer les fichiers et les partitions du disque sélectionné.</p>
+</section><section class="panel">
+  <h2 data-fr="🔎 Rechercher un sujet" data-ml="🔎 Mitady lohahevitra">🔎 Rechercher un sujet</h2>
+  <input id="search" class="search" type="search"
+   placeholder="Ex. : clé USB, BIOS, disque non détecté..."
+   data-placeholder-fr="Ex. : clé USB, BIOS, disque non détecté..."
+   data-placeholder-ml="Ohatra: clé USB, BIOS, disque tsy hita..."
+   oninput="filterCards()">
+  <p id="count" class="muted">Guides disponibles</p>
+</section><section class="grid" id="guides"><article class="card" data-search="préparation matériel sauvegarde fichiers matériel installation fanomanana fitaovana">
+  <div class="icon">📋</div><span class="tag" data-fr="ÉTAPE 1" data-ml="DINGANA 1">ÉTAPE 1</span>
+  <h3 data-fr="1. Préparer l'installation" data-ml="1. Manomana ny fametrahana">1. Préparer l'installation</h3>
+  <p data-fr="Vérifier le matériel et protéger les données avant de commencer." data-ml="Manamarina ny fitaovana ary miaro ny angona alohan'ny hanombohana.">Vérifier le matériel et protéger les données avant de commencer.</p>
+  <button class="btn" onclick="toggleSteps(this)" data-fr="Afficher les étapes" data-ml="Asehoy ny dingana">Afficher les étapes</button>
+  <div class="steps"><ol>
+    <li data-fr="Sauvegardez les documents, photos et autres fichiers importants." data-ml="Tehirizo ny antontan-taratasy, sary ary rakitra manan-danja.">Sauvegardez les documents, photos et autres fichiers importants.</li>
+    <li data-fr="Vérifiez la mémoire RAM, le disque de stockage et l'alimentation." data-ml="Zahao ny RAM, ny disque fitahirizana ary ny alimentation.">Vérifiez la mémoire RAM, le disque de stockage et l'alimentation.</li>
+    <li data-fr="Vérifiez la compatibilité du PC avec la version de Windows visée." data-ml="Zahao raha mifanaraka amin'ny Windows kasaina hapetraka ilay PC.">Vérifiez la compatibilité du PC avec la version de Windows visée.</li>
+    <li data-fr="Préparez une clé USB adaptée et des fichiers d'installation officiels." data-ml="Manomàna clé USB mifanaraka sy rakitra fametrahana ofisialy.">Préparez une clé USB adaptée et des fichiers d'installation officiels.</li>
+    <li data-fr="Sur un portable, branchez le chargeur pendant l'installation." data-ml="Amin'ny portable, ampifandraiso ny chargeur mandritra ny fametrahana.">Sur un portable, branchez le chargeur pendant l'installation.</li>
+  </ol></div>
+</article><article class="card" data-search="clé USB bootable outil création média installation Windows USB">
+  <div class="icon">🔑</div><span class="tag" data-fr="ÉTAPE 2" data-ml="DINGANA 2">ÉTAPE 2</span>
+  <h3 data-fr="2. Préparer une clé USB bootable" data-ml="2. Manomana clé USB bootable">2. Préparer une clé USB bootable</h3>
+  <p data-fr="Créer un support permettant de lancer l'installation." data-ml="Mamorona fitaovana ahafahana manomboka ny fametrahana.">Créer un support permettant de lancer l'installation.</p>
+  <button class="btn" onclick="toggleSteps(this)" data-fr="Afficher les étapes" data-ml="Asehoy ny dingana">Afficher les étapes</button>
+  <div class="steps"><ol>
+    <li data-fr="Utilisez un autre ordinateur fonctionnel et une clé USB de capacité suffisante, généralement au moins 8 Go." data-ml="Mampiasà ordinateur mandeha tsara sy clé USB manana toerana ampy, matetika 8 Go farafahakeliny.">Utilisez un autre ordinateur fonctionnel et une clé USB de capacité suffisante.</li>
+    <li data-fr="Téléchargez l'outil de création de support ou l'image ISO depuis le site officiel Microsoft." data-ml="Sintomy avy amin'ny tranonkala ofisialin'i Microsoft ny fitaovana na ISO.">Téléchargez l'outil de création de support ou l'image ISO depuis le site officiel Microsoft.</li>
+    <li data-fr="Suivez les instructions de l'outil pour créer le support USB." data-ml="Araho ny torolalan'ilay fitaovana hamoronana ny clé USB.">Suivez les instructions de l'outil.</li>
+    <li data-fr="Attention : la création du support efface généralement le contenu de la clé USB." data-ml="Tandremo: matetika voafafa ny ao anatin'ny clé USB rehefa mamorona support.">Attention : la création du support efface généralement le contenu de la clé USB.</li>
+  </ol>
+  <p><a href="https://www.microsoft.com/software-download/" target="_blank" rel="noopener" style="color:#6df4df" data-fr="Ouvrir le site officiel de téléchargement Windows" data-ml="Sokafy ny tranonkala ofisialy hisintonana Windows">Ouvrir le site officiel de téléchargement Windows</a></p>
+  </div>
+</article><article class="card" data-search="BIOS UEFI Boot Menu HP Dell Lenovo Acer ASUS touche démarrage">
+  <div class="icon">⚙️</div><span class="tag">BIOS / BOOT MENU</span>
+  <h3 data-fr="3. Démarrer depuis la clé USB" data-ml="3. Mandefa avy amin'ny clé USB">3. Démarrer depuis la clé USB</h3>
+  <p data-fr="Choisir la clé USB dans le menu de démarrage." data-ml="Misafidy ny clé USB ao amin'ny menu de démarrage.">Choisir la clé USB dans le menu de démarrage.</p>
+  <button class="btn" onclick="toggleSteps(this)" data-fr="Afficher les étapes" data-ml="Asehoy ny dingana">Afficher les étapes</button>
+  <div class="steps"><ol>
+    <li data-fr="Branchez la clé USB bootable." data-ml="Ampifandraiso ny clé USB bootable.">Branchez la clé USB bootable.</li>
+    <li data-fr="Allumez le PC et appuyez plusieurs fois sur la touche de Boot Menu correspondant au modèle." data-ml="Alefaso ny PC ary tsindrio imbetsaka ny touche Boot Menu mifanaraka amin'ilay modèle.">Allumez le PC et appuyez plusieurs fois sur la touche de Boot Menu correspondant au modèle.</li>
+    <li data-fr="Sélectionnez l'entrée USB correspondant à votre clé." data-ml="Fidio ilay USB mifanaraka amin'ny clé USB-nao.">Sélectionnez l'entrée USB correspondant à votre clé.</li>
+    <li data-fr="Si la clé n'apparaît pas, vérifiez sa création, le port USB et les indications du fabricant." data-ml="Raha tsy miseho ilay clé, zahao ny fomba namoronana azy, ny port USB ary ny torolalan'ny mpanamboatra.">Si la clé n'apparaît pas, vérifiez sa création et le port USB.</li>
+  </ol></div>
+</article><article class="card" data-search="installation Windows langue installer installer maintenant licence">
+  <div class="icon">🪟</div><span class="tag" data-fr="ÉTAPE 4" data-ml="DINGANA 4">ÉTAPE 4</span>
+  <h3 data-fr="4. Lancer l'installation Windows" data-ml="4. Manomboka ny fametrahana Windows">4. Lancer l'installation Windows</h3>
+  <p data-fr="Comprendre les premiers écrans de l'installateur." data-ml="Mahafantatra ireo efijery voalohany amin'ny installateur.">Comprendre les premiers écrans de l'installateur.</p>
+  <button class="btn" onclick="toggleSteps(this)" data-fr="Afficher les étapes" data-ml="Asehoy ny dingana">Afficher les étapes</button>
+  <div class="steps"><ol>
+    <li data-fr="Choisissez la langue, le format horaire et le clavier." data-ml="Fidio ny fiteny, ny endriky ny ora ary ny clavier.">Choisissez la langue, le format horaire et le clavier.</li>
+    <li data-fr="Cliquez sur Installer maintenant." data-ml="Tsindrio Installer maintenant.">Cliquez sur Installer maintenant.</li>
+    <li data-fr="Suivez les instructions concernant la licence et l'édition de Windows." data-ml="Araho ny torolalana momba ny licence sy ny édition Windows.">Suivez les instructions concernant la licence et l'édition de Windows.</li>
+    <li data-fr="Choisissez le type d'installation en comprenant la différence entre mise à niveau et installation personnalisée." data-ml="Fidio ny karazana fametrahana rehefa azonao ny maha-samy hafa ny mise à niveau sy installation personnalisée.">Choisissez le type d'installation en comprenant la différence entre mise à niveau et installation personnalisée.</li>
+  </ol></div>
+</article><article class="card" data-search="partition disque dur SSD formatage supprimer installation personnalisée">
+  <div class="icon">💽</div><span class="tag" data-fr="DISQUE" data-ml="DISQUE">DISQUE</span>
+  <h3 data-fr="5. Choisir le disque d'installation" data-ml="5. Misafidy ny disque hametrahana">5. Choisir le disque d'installation</h3>
+  <p data-fr="Une étape importante qui peut entraîner une perte de données." data-ml="Dingana lehibe izay mety hahavery angona.">Une étape importante qui peut entraîner une perte de données.</p>
+  <button class="btn" onclick="toggleSteps(this)" data-fr="Afficher les étapes" data-ml="Asehoy ny dingana">Afficher les étapes</button>
+  <div class="steps"><ol>
+    <li data-fr="Identifiez le disque cible par sa capacité et les informations affichées." data-ml="Fantaro ilay disque kendrena araka ny capacité sy ny fampahalalana miseho.">Identifiez le disque cible par sa capacité et les informations affichées.</li>
+    <li data-fr="Ne supprimez aucune partition si vous ne savez pas à quoi elle sert." data-ml="Aza mamafa partition raha tsy fantatrao ny asany.">Ne supprimez aucune partition si vous ne savez pas à quoi elle sert.</li>
+    <li data-fr="Pour une installation propre, confirmez d'abord que les fichiers sont sauvegardés et que le bon disque est sélectionné." data-ml="Ho an'ny fametrahana madio, hamarino aloha fa voatahiry ny rakitra ary ilay disque marina no voafidy.">Pour une installation propre, confirmez d'abord que les fichiers sont sauvegardés.</li>
+    <li data-fr="En cas de doute, arrêtez-vous et demandez l'aide d'un technicien." data-ml="Raha misalasala ianao dia ajanony ary mangataha fanampiana amin'ny teknisianina.">En cas de doute, arrêtez-vous et demandez l'aide d'un technicien.</li>
+  </ol></div>
+</article><article class="card" data-search="redémarrage installation pilotes mises à jour réseau activation Windows">
+  <div class="icon">🔄</div><span class="tag" data-fr="APRÈS INSTALLATION" data-ml="REHEFA VITA">APRÈS INSTALLATION</span>
+  <h3 data-fr="6. Terminer et configurer Windows" data-ml="6. Mamita sy mandamina Windows">6. Terminer et configurer Windows</h3>
+  <p data-fr="Effectuer les vérifications après le premier démarrage." data-ml="Manao fanamarinana rehefa mandeha voalohany ny Windows.">Effectuer les vérifications après le premier démarrage.</p>
+  <button class="btn" onclick="toggleSteps(this)" data-fr="Afficher les étapes" data-ml="Asehoy ny dingana">Afficher les étapes</button>
+  <div class="steps"><ol>
+    <li data-fr="Suivez les étapes de configuration initiale affichées à l'écran." data-ml="Araho ireo dingana fanamboarana voalohany miseho eo amin'ny écran.">Suivez les étapes de configuration initiale affichées à l'écran.</li>
+    <li data-fr="Connectez-vous au réseau si disponible et vérifiez Windows Update." data-ml="Ampifandraiso amin'ny réseau raha misy ary zahao Windows Update.">Connectez-vous au réseau si disponible et vérifiez Windows Update.</li>
+    <li data-fr="Installez les pilotes nécessaires depuis Windows Update ou le site officiel du fabricant." data-ml="Ampidiro ireo pilote ilaina avy amin'ny Windows Update na tranonkala ofisialin'ny mpanamboatra.">Installez les pilotes nécessaires depuis Windows Update ou le site officiel du fabricant.</li>
+    <li data-fr="Vérifiez le son, le réseau, l'affichage, le clavier et les périphériques." data-ml="Zahao ny feo, réseau, affichage, clavier ary périphériques.">Vérifiez le son, le réseau, l'affichage, le clavier et les périphériques.</li>
+    <li data-fr="Vérifiez l'activation de Windows avec une licence valide." data-ml="Zahao ny activation Windows amin'ny licence ara-dalàna.">Vérifiez l'activation de Windows avec une licence valide.</li>
+  </ol></div>
+</article><article class="card" data-search="Windows disque absent installation pilote stockage Intel RST VMD RAID">
+  <div class="icon">🔍</div><span class="tag" data-fr="ERREUR" data-ml="OLANA">ERREUR</span>
+  <h3 data-fr="7. Le disque n'apparaît pas" data-ml="7. Tsy miseho ny disque">7. Le disque n'apparaît pas</h3>
+  <p data-fr="Diagnostic lorsque l'installateur ne trouve aucun disque." data-ml="Fizahana rehefa tsy mahita disque ny installateur.">Diagnostic lorsque l'installateur ne trouve aucun disque.</p>
+  <button class="btn" onclick="toggleSteps(this)" data-fr="Afficher les étapes" data-ml="Asehoy ny dingana">Afficher les étapes</button>
+  <div class="steps"><ol>
+    <li data-fr="Vérifiez si le disque est détecté dans le BIOS/UEFI." data-ml="Zahao raha hita ao amin'ny BIOS/UEFI ilay disque.">Vérifiez si le disque est détecté dans le BIOS/UEFI.</li>
+    <li data-fr="S'il est absent du BIOS, vérifiez le branchement, le port et le matériel." data-ml="Raha tsy hita ao amin'ny BIOS izy, zahao ny branchement, port ary fitaovana.">S'il est absent du BIOS, vérifiez le branchement, le port et le matériel.</li>
+    <li data-fr="S'il est présent dans le BIOS, vérifiez si le contrôleur de stockage nécessite un pilote fourni par le fabricant." data-ml="Raha hita ao amin'ny BIOS izy, zahao raha mila pilote contrôleur stockage avy amin'ny mpanamboatra.">S'il est présent dans le BIOS, vérifiez si le contrôleur de stockage nécessite un pilote.</li>
+    <li data-fr="Certains appareils utilisent Intel RST/VMD ou RAID. Consultez le support officiel avant toute modification." data-ml="Misy fitaovana mampiasa Intel RST/VMD na RAID. Jereo ny support ofisialy alohan'ny fanovana.">Certains appareils utilisent Intel RST/VMD ou RAID.</li>
+    <li data-fr="Ne formatez pas le disque pour résoudre un problème de détection." data-ml="Aza manao format mba hamahana olana amin'ny fahitana disque.">Ne formatez pas le disque pour résoudre un problème de détection.</li>
+  </ol></div>
+</article><article class="card" data-search="No Bootable Device système absent ordre démarrage Windows">
+  <div class="icon">🚫</div><span class="tag">BOOT</span>
+  <h3 data-fr="8. Message No Bootable Device" data-ml="8. Hafatra No Bootable Device">8. Message No Bootable Device</h3>
+  <p data-fr="Le PC ne trouve pas de périphérique de démarrage valide." data-ml="Tsy mahita fitaovana ahafahana manomboka ny PC.">Le PC ne trouve pas de périphérique de démarrage valide.</p>
+  <button class="btn" onclick="toggleSteps(this)" data-fr="Afficher les étapes" data-ml="Asehoy ny dingana">Afficher les étapes</button>
+  <div class="steps"><ol>
+    <li data-fr="Vérifiez si le SSD/HDD est détecté dans le BIOS." data-ml="Zahao raha hita ao amin'ny BIOS ny SSD/HDD.">Vérifiez si le SSD/HDD est détecté dans le BIOS.</li>
+    <li data-fr="Vérifiez l'ordre de démarrage et sélectionnez le bon périphérique." data-ml="Zahao ny filaharan'ny démarrage ary fidio ilay fitaovana marina.">Vérifiez l'ordre de démarrage.</li>
+    <li data-fr="Si Windows était installé, essayez les outils de réparation du démarrage." data-ml="Raha efa napetraka ny Windows, andramo ny fitaovana fanamboarana démarrage.">Si Windows était installé, essayez les outils de réparation du démarrage.</li>
+    <li data-fr="Si le disque disparaît ou présente des signes de panne, protégez les données avant de poursuivre." data-ml="Raha tsy hita intsony ilay disque na misy famantarana fahasimbana, arovy ny angona alohan'ny hanohizana.">Si le disque présente des signes de panne, protégez les données.</li>
+  </ol></div>
+</article><article class="card" data-search="Windows 11 compatibilité TPM 2.0 Secure Boot processeur configuration">
+  <div class="icon">🛡️</div><span class="tag">WINDOWS 11</span>
+  <h3 data-fr="9. Vérifier la compatibilité Windows 11" data-ml="9. Manamarina ny compatibilité Windows 11">9. Vérifier la compatibilité Windows 11</h3>
+  <p data-fr="Windows 11 demande des caractéristiques matérielles spécifiques." data-ml="Mitaky toetra manokana amin'ny fitaovana ny Windows 11.">Windows 11 demande des caractéristiques matérielles spécifiques.</p>
+  <button class="btn" onclick="toggleSteps(this)" data-fr="Afficher les étapes" data-ml="Asehoy ny dingana">Afficher les étapes</button>
+  <div class="steps"><ol>
+    <li data-fr="Vérifiez les exigences officielles de processeur, mémoire et stockage." data-ml="Zahao ny fepetra ofisialy momba ny processeur, mémoire ary stockage.">Vérifiez les exigences officielles de processeur, mémoire et stockage.</li>
+    <li data-fr="Windows 11 exige notamment TPM 2.0 et un firmware compatible avec Secure Boot." data-ml="Mitaky TPM 2.0 sy firmware mifanaraka amin'ny Secure Boot ny Windows 11.">Windows 11 exige notamment TPM 2.0 et un firmware compatible avec Secure Boot.</li>
+    <li data-fr="Consultez les informations du fabricant avant de modifier les réglages du BIOS." data-ml="Jereo ny fampahalalana avy amin'ny mpanamboatra alohan'ny hanovana BIOS.">Consultez les informations du fabricant avant de modifier les réglages du BIOS.</li>
+    <li data-fr="Ne contournez pas les exigences sans comprendre les risques de compatibilité et de support." data-ml="Aza miezaka mandingana ireo fepetra raha tsy azonao ny loza mety hitranga amin'ny compatibilité sy support.">Ne contournez pas les exigences sans comprendre les risques.</li>
+  </ol>
+  <p><a href="https://www.microsoft.com/windows/windows-11-specifications" target="_blank" rel="noopener" style="color:#6df4df" data-fr="Consulter les exigences officielles de Windows 11" data-ml="Jereo ny fepetra ofisialin'ny Windows 11">Consulter les exigences officielles de Windows 11</a></p>
+  </div>
+</article></section><section class="panel" style="margin-top:20px">
+  <h2 data-fr="⌨️ Touches BIOS et Boot Menu par marque" data-ml="⌨️ Touche BIOS sy Boot Menu araka ny marika">⌨️ Touches BIOS et Boot Menu par marque</h2>
+  <p class="muted" data-fr="Les touches ci-dessous sont courantes mais peuvent varier selon le modèle et la génération." data-ml="Fampiasa matetika ireo touche ireo, saingy mety hiova arakaraka ny modèle sy ny génération.">Les touches ci-dessous sont courantes mais peuvent varier selon le modèle et la génération.</p>
+  <table class="keytable">
+    <thead><tr>
+      <th data-fr="Marque" data-ml="Marika">Marque</th>
+      <th data-fr="Boot Menu fréquent" data-ml="Boot Menu matetika">Boot Menu fréquent</th>
+      <th data-fr="BIOS fréquent" data-ml="BIOS matetika">BIOS fréquent</th>
+    </tr></thead>
+    <tbody>
+      <tr><td>HP</td><td>Esc puis F9</td><td>Esc puis F10</td></tr>
+      <tr><td>Dell</td><td>F12</td><td>F2</td></tr>
+      <tr><td>Lenovo</td><td>F12 / bouton Novo</td><td>F1 ou F2 selon modèle</td></tr>
+      <tr><td>Acer</td><td>F12 si activé</td><td>F2</td></tr>
+      <tr><td>ASUS</td><td>Esc selon modèle</td><td>F2</td></tr>
+    </tbody>
+  </table>
+  <p class="small muted" data-fr="Conseil : si une touche ne fonctionne pas, consultez le manuel officiel de l'ordinateur. Sur certains portables, il faut utiliser Fn avec la touche de fonction."
+  data-ml="Torohevitra: raha tsy mandeha ny touche dia jereo ny manuel ofisialin'ny ordinateur. Amin'ny portable sasany dia ilaina ny manindry Fn miaraka amin'ny touche fonction.">Conseil : si une touche ne fonctionne pas, consultez le manuel officiel de l'ordinateur.</p>
+</section><section class="warning">
+  <strong data-fr="🧑‍🔧 Quand arrêter et demander de l'aide ?" data-ml="🧑‍🔧 Rahoviana no tokony hijanona sy hangataka fanampiana?">🧑‍🔧 Quand arrêter et demander de l'aide ?</strong>
+  <p data-fr="Arrêtez les essais si le disque contient des données irremplaçables, si le matériel chauffe anormalement, si une odeur de brûlé apparaît ou si vous n'êtes pas sûr du disque à sélectionner."
+  data-ml="Ajanony ny fitsapana raha misy angona tsy azo soloina ao amin'ny disque, raha mafana tsy ara-dalàna ny fitaovana, raha misy fofona may, na raha tsy azonao antoka izay disque hofidiana.">Arrêtez les essais si le disque contient des données irremplaçables ou si vous n'êtes pas sûr du disque à sélectionner.</p>
+</section><section class="panel">
+  <h2 data-fr="👨‍🏫 Résumé de la leçon" data-ml="👨‍🏫 Famintinana ny lesona">👨‍🏫 Résumé de la leçon</h2>
+  <p data-fr="Une installation réussie demande une préparation correcte, un support USB fiable, un choix prudent du disque et les pilotes adaptés. En cas d'erreur, diagnostiquez d'abord avant de formater."
+  data-ml="Mila fanomanana tsara, clé USB azo itokisana, fisafidianana amim-pitandremana ny disque ary pilote mifanaraka ny fametrahana mahomby. Raha misy olana dia fantaro aloha ny antony vao mieritreritra formatage.">Une installation réussie demande une préparation correcte, un support USB fiable et un choix prudent du disque.</p>
+</section></main><footer>
+  <p>💻 InfoPro — <span data-fr="Apprendre • Pratiquer • Réussir" data-ml="Mianatra • Mampihatra • Mahomby">Apprendre • Pratiquer • Réussir</span></p>
+  <p>Mr Tahiry - Informatique 👨‍🏫</p>
+</footer><script>
+let langue="fr";
+
+function setLang(l){
+  langue=l;
+  document.documentElement.lang=l==="fr"?"fr":"mg";
+
+  document.querySelectorAll("[data-fr][data-ml]").forEach(el=>{
+    el.textContent=el.getAttribute("data-"+l);
+  });
+
+  document.querySelectorAll("[data-placeholder-fr]").forEach(el=>{
+    el.placeholder=el.getAttribute("data-placeholder-"+l);
+  });
+
+  document.getElementById("frBtn").classList.toggle("active",l==="fr");
+  document.getElementById("mlBtn").classList.toggle("active",l==="ml");
+
+  document.querySelectorAll(".card .btn").forEach(btn=>{
+    const ouvert=btn.nextElementSibling.classList.contains("open");
+    btn.textContent=ouvert
+      ? (l==="fr"?"Masquer les étapes":"Afeno ny dingana")
+      : (l==="fr"?"Afficher les étapes":"Asehoy ny dingana");
+  });
+
+  filterCards();
+}
+
+function toggleSteps(btn){
+  const steps=btn.nextElementSibling;
+  steps.classList.toggle("open");
+  btn.textContent=steps.classList.contains("open")
+    ? (langue==="fr"?"Masquer les étapes":"Afeno ny dingana")
+    : (langue==="fr"?"Afficher les étapes":"Asehoy ny dingana");
+}
+
+function filterCards(){
+  const query=document.getElementById("search").value.toLowerCase().trim();
+  let visible=0;
+
+  document.querySelectorAll("#guides .card").forEach(card=>{
+    const content=(card.innerText+" "+card.dataset.search).toLowerCase();
+    const match=content.includes(query);
+    card.classList.toggle("hidden",!match);
+    if(match) visible++;
+  });
+
+  document.getElementById("count").textContent=langue==="fr"
+    ? visible+" guide(s) affiché(s)"
+    : "Torolalana "+visible+" no hita";
+}
+
+setLang("fr");
+</script></body>
+</html>

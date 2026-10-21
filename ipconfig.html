@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesona CMD - ipconfig</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin:0; padding:0;}
+        header { background-color: #007bff; color:white; padding:15px 30px; display:flex; justify-content:space-between; align-items:center;}
+        header h1 { margin:0; font-size:20px;}
+        header button { background-color:white; color:#007bff; border:none; padding:8px 15px; border-radius:6px; cursor:pointer; font-weight:bold;}
+        header button:hover { background-color:#e6e6e6;}
+        .container { max-width:900px; margin:30px auto; background-color:#fff; padding:30px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.1);}
+        h2 { color:#333; }
+        pre { background-color:#272822; color:#f8f8f2; padding:15px; border-radius:8px; overflow-x:auto; }
+        ul { margin-left:20px; }
+        .buttons { margin-top:30px; display:flex; justify-content:space-between; }
+        .buttons button { background-color:#007bff; border:none; color:white; padding:10px 20px; font-size:16px; border-radius:8px; cursor:pointer; transition:0.3s; }
+        .buttons button:hover { background-color:#0056b3; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 id="title">Lesona CMD : ipconfig</h1>
+        <div>
+            <button onclick="switchLang('fr')">FR</button>
+            <button onclick="switchLang('ml')">ML</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div id="content"></div>
+
+        <div class="buttons">
+            <button id="prevBtn">← Previous</button>
+            <button id="nextBtn">Next →</button>
+        </div>
+    </div>
+
+    <script>
+        // Contenu lesona ipconfig
+        const lesson = {
+            fr: `
+<h2>1️⃣ Commande de base</h2>
+<pre>ipconfig</pre>
+<p>Affiche la configuration IP des interfaces réseau de votre ordinateur.</p>
+
+<h2>2️⃣ Informations principales</h2>
+<ul>
+<li>Adresse IPv4</li>
+<li>Masque de sous-réseau</li>
+<li>Passerelle par défaut</li>
+<li>Adresse MAC (Physique)</li>
+</ul>
+
+<h2>3️⃣ Options utiles</h2>
+<ul>
+<li>/all : affiche toutes les informations détaillées</li>
+<li>/release : libère l'adresse IP actuelle</li>
+<li>/renew : renouvelle l'adresse IP</li>
+<li>/flushdns : vide le cache DNS</li>
+<li>/displaydns : affiche le cache DNS</li>
+</ul>
+
+<h2>4️⃣ Exemple pratique</h2>
+<pre>
+C:\\Users\\Jeanjacques>ipconfig /all
+
+Carte Ethernet Connexion au réseau local :
+   Suffixe DNS propre à la connexion : home
+   Adresse IPv4. . . . . . . . . . . : 192.168.1.10
+   Masque de sous-réseau . . . . . . : 255.255.255.0
+   Passerelle par défaut . . . . . . : 192.168.1.1
+</pre>
+
+<h2>5️⃣ Remarques</h2>
+<ul>
+<li>Très utile pour diagnostiquer des problèmes réseau.</li>
+<li>Vous pouvez combiner avec d’autres commandes comme ping pour tester la connectivité.</li>
+<li>La commande ne change pas la configuration réseau par défaut sauf si vous utilisez /release ou /renew.</li>
+</ul>
+            `,
+            ml: `
+<h2>1️⃣ Fomba fototra</h2>
+<pre>ipconfig</pre>
+<p>Aseho ny configuration IP amin'ny interface réseau rehetra amin'ny solosaina.</p>
+
+<h2>2️⃣ Fampahalalana lehibe</h2>
+<ul>
+<li>Adresse IPv4</li>
+<li>Masque de sous-réseau</li>
+<li>Passerelle par défaut</li>
+<li>Adresse MAC (Physique)</li>
+</ul>
+
+<h2>3️⃣ Options ilaina</h2>
+<ul>
+<li>/all : aseho ny fampahalalana rehetra amin'ny antsipiriany</li>
+<li>/release : mamoaka ny adresse IP ankehitriny</li>
+<li>/renew : manavao ny adresse IP</li>
+<li>/flushdns : manadio ny cache DNS</li>
+<li>/displaydns : aseho ny cache DNS</li>
+</ul>
+
+<h2>4️⃣ Ohatra fampiharana</h2>
+<pre>
+C:\\Users\\Jeanjacques>ipconfig /all
+
+Carte Ethernet Connexion au réseau local :
+   Suffixe DNS propre à la connexion : home
+   Adresse IPv4. . . . . . . . . . . : 192.168.1.10
+   Masque de sous-réseau . . . . . . : 255.255.255.0
+   Passerelle par défaut . . . . . . : 192.168.1.1
+</pre>
+
+<h2>5️⃣ Fanamarihana</h2>
+<ul>
+<li>Ilaina rehefa manao diagnostic ny olana réseau.</li>
+<li>Afaka ampiasaina miaraka amin'ny baiko hafa toy ny ping mba hizaha connectivity.</li>
+<li>Tsy manova ny configuration réseau raha tsy mampiasa /release na /renew.</li>
+</ul>
+            `
+        };
+
+        function loadLesson(lang='fr') {
+            document.getElementById('title').textContent = lang === 'fr' ? "Lesona CMD : ipconfig" : "Lesona CMD : ipconfig";
+            document.getElementById('content').innerHTML = lesson[lang];
+        }
+
+        function switchLang(lang) {
+            loadLesson(lang);
+        }
+
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            window.location.href = "08_taskkill.html"; // URL pejy teo aloha
+        });
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            window.location.href = "09_ping.html"; // URL pejy manaraka
+        });
+
+        // Charger la leçon par défaut
+        loadLesson('fr');
+    </script>
+
+</body>
+</html>

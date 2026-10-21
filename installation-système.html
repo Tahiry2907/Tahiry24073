@@ -1,0 +1,457 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Installation des systèmes d'exploitation | InfoPro</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bleu:#102a56;--cyan:#13b8c8;--fond:#eef4fb;--texte:#23344d}
+body{font-family:Arial,sans-serif;background:var(--fond);color:var(--texte);line-height:1.7}
+header{background:linear-gradient(120deg,#102a56,#087e9b);color:white;padding:25px 15px;text-align:center}
+header h1{font-size:clamp(24px,5vw,38px)}
+header p{margin-top:8px}
+nav{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;padding:12px;background:#fff;position:sticky;top:0;z-index:10;box-shadow:0 3px 10px #0001}
+button,.btn{border:0;border-radius:9px;padding:10px 15px;background:var(--bleu);color:white;cursor:pointer;font-weight:bold;text-decoration:none;display:inline-block}
+button:hover,.btn:hover{opacity:.85}
+button.active{background:var(--cyan);color:#102a56}
+main{max-width:1000px;margin:22px auto;padding:0 14px}
+.hero,.card{background:white;border-radius:15px;padding:22px;margin-bottom:18px;box-shadow:0 5px 18px #102a5610}
+.hero{background:linear-gradient(130deg,#dff8fc,#fff)}
+h2{color:var(--bleu);margin-bottom:12px}
+h3{color:#087e9b;margin:12px 0 7px}
+p{margin:7px 0}
+ul,ol{padding-left:24px}
+li{margin:5px 0}
+.notice{padding:14px;border-left:5px solid #e5a000;background:#fff6d8;border-radius:8px;margin:12px 0}
+.good{padding:14px;border-left:5px solid #16a36a;background:#e5fff1;border-radius:8px;margin:12px 0}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:13px}
+.step{border:1px solid #dce7f2;border-radius:12px;padding:16px;background:#fafdff}
+.num{background:var(--cyan);color:#102a56;border-radius:50%;display:inline-flex;width:32px;height:32px;align-items:center;justify-content:center;font-weight:bold;margin-bottom:8px}
+table{width:100%;border-collapse:collapse;margin:12px 0}
+th,td{padding:10px;border:1px solid #d9e2ee;text-align:left}
+th{background:#e2f6fa}
+.question{padding:15px;border:1px solid #dce7f2;border-radius:10px;margin:12px 0}
+.question label{display:block;padding:5px;cursor:pointer}
+.result{font-weight:bold;margin-top:12px}
+footer{background:#102a56;color:white;text-align:center;padding:22px;margin-top:30px}
+[hidden]{display:none!important}
+@media(max-width:600px){.hero,.card{padding:16px}nav button{padding:9px 11px}table{font-size:13px}}
+@media print{nav,.no-print,footer{display:none!important}body{background:white}.card,.hero{box-shadow:none;border:1px solid #ddd;break-inside:avoid}main{max-width:100%}}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>💻 InfoPro</h1>
+<p id="subtitle">Apprendre • Pratiquer • Réussir</p>
+<p id="headTitle">Installation des systèmes d'exploitation</p>
+</header>
+
+<nav class="no-print">
+<button id="frBtn" class="active" onclick="setLang('fr')">🇫🇷 Français</button>
+<button id="mlBtn" onclick="setLang('ml')">🇲🇬 Malagasy</button>
+<button onclick="window.print()">🖨️ Imprimer / PDF</button>
+<a class="btn" href="index.php">Accueil InfoPro</a>
+</nav>
+
+<main>
+
+<section class="hero">
+<div data-lang="fr">
+<h2>Leçon : Installation d'un système d'exploitation</h2>
+<p><b>Discipline :</b> Informatique</p>
+<p><b>Public :</b> Collège et lycée</p>
+<p><b>Durée indicative :</b> 2 heures</p>
+<p><b>Enseignant :</b> M. Tahiry</p>
+<p>Cette leçon explique les notions essentielles, la préparation du matériel, les étapes d'installation et les vérifications après installation.</p>
+</div>
+<div data-lang="ml" hidden>
+<h2>Lesona : Fametrahana système d'exploitation</h2>
+<p><b>Taranja :</b> Informatika</p>
+<p><b>Ambaratonga :</b> Collège sy lycée</p>
+<p><b>Faharetany :</b> 2 ora eo ho eo</p>
+<p><b>Mpampianatra :</b> M. Tahiry</p>
+<p>Ity lesona ity dia manazava ny rafitra fiasan'ny ordinateur, ny fanomanana, ny dingana fametrahana ary ny fanamarinana rehefa vita.</p>
+</div>
+</section>
+
+<section class="card">
+<div data-lang="fr">
+<h2>1. Objectifs pédagogiques</h2>
+<p>À la fin de cette leçon, l'élève sera capable de :</p>
+<ul>
+<li>Définir un système d'exploitation (OS).</li>
+<li>Citer plusieurs systèmes d'exploitation.</li>
+<li>Expliquer le rôle d'une clé USB bootable.</li>
+<li>Décrire les principales étapes d'une installation.</li>
+<li>Reconnaître quelques erreurs courantes.</li>
+<li>Appliquer les règles de sauvegarde et de sécurité.</li>
+</ul>
+</div>
+<div data-lang="ml" hidden>
+<h2>1. Tanjona amin'ny lesona</h2>
+<p>Rehefa vita ny lesona dia tokony hahavita ny mpianatra :</p>
+<ul>
+<li>Mamaritra ny atao hoe système d'exploitation.</li>
+<li>Manonona karazana OS maromaro.</li>
+<li>Manazava ny asan'ny clé USB bootable.</li>
+<li>Milaza ny dingana lehibe amin'ny installation.</li>
+<li>Mamantatra olana mahazatra.</li>
+<li>Manaja ny fitsipika fiarovana sy sauvegarde.</li>
+</ul>
+</div>
+</section>
+
+<section class="card">
+<div data-lang="fr">
+<h2>2. Définition d'un système d'exploitation</h2>
+<p>Un système d'exploitation est un logiciel de base qui gère les ressources d'un ordinateur et permet aux autres logiciels de fonctionner.</p>
+<h3>Ses principales fonctions</h3>
+<ul>
+<li>Gérer le processeur et la mémoire.</li>
+<li>Gérer les fichiers et les dossiers.</li>
+<li>Contrôler les périphériques : clavier, souris, écran, imprimante.</li>
+<li>Permettre l'exécution des applications.</li>
+<li>Gérer les comptes et certaines fonctions de sécurité.</li>
+</ul>
+</div>
+<div data-lang="ml" hidden>
+<h2>2. Famaritana ny système d'exploitation</h2>
+<p>Ny système d'exploitation dia rindrankajy fototra mitantana ny loharanon'ny ordinateur ary ahafahan'ny logiciels hafa miasa.</p>
+<h3>Ny andraikiny</h3>
+<ul>
+<li>Mitantana ny processeur sy ny mémoire.</li>
+<li>Mitantana ny fichiers sy dossiers.</li>
+<li>Mifehy ny périphériques: clavier, souris, écran ary imprimante.</li>
+<li>Ahafahana mampandeha application.</li>
+<li>Mitantana ny kaonty sy ny fiarovana sasany.</li>
+</ul>
+</div>
+<table>
+<tr><th>Système d'exploitation</th><th>Exemple d'utilisation</th></tr>
+<tr><td>Windows</td><td>Ordinateurs personnels et scolaires</td></tr>
+<tr><td>Linux / Ubuntu</td><td>Ordinateurs personnels, serveurs et enseignement</td></tr>
+<tr><td>macOS</td><td>Ordinateurs Apple Mac</td></tr>
+<tr><td>Android</td><td>Nombreux téléphones et tablettes</td></tr>
+</table>
+</section>
+
+<section class="card">
+<div data-lang="fr">
+<h2>3. Les différents types d'installation</h2>
+<h3>A. Installation propre</h3>
+<p>Elle installe un système sur une partition choisie. Selon les choix effectués, les données présentes peuvent être effacées.</p>
+<h3>B. Mise à niveau</h3>
+<p>Elle remplace une ancienne version par une version plus récente lorsque le système et le matériel le permettent.</p>
+<h3>C. Réinstallation</h3>
+<p>Elle consiste à réinstaller le système existant, par exemple pour réparer certains problèmes logiciels.</p>
+</div>
+<div data-lang="ml" hidden>
+<h2>3. Karazana installation</h2>
+<h3>A. Installation propre</h3>
+<p>Fametrahana rafitra vaovao amin'ny partition iray. Miankina amin'ny safidy atao, mety ho voafafa ny angona ao.</p>
+<h3>B. Mise à niveau</h3>
+<p>Fanavaozana ny rafitra taloha ho amin'ny kinova vaovao raha mahazaka izany ny ordinateur.</p>
+<h3>C. Réinstallation</h3>
+<p>Fametrahana indray ny rafitra efa nisy, ohatra rehefa misy olana amin'ny logiciel.</p>
+</div>
+</section>
+
+<section class="card">
+<div data-lang="fr">
+<h2>4. Matériel et préparation</h2>
+<ul>
+<li>Un ordinateur compatible avec le système choisi.</li>
+<li>Un support d'installation officiel, par exemple une clé USB bootable.</li>
+<li>Un chargeur ou une alimentation stable.</li>
+<li>Une connexion Internet si nécessaire pour télécharger le système et les pilotes.</li>
+<li>Une licence valide si elle est requise.</li>
+</ul>
+<div class="notice"><b>Attention :</b> la création d'une clé USB d'installation efface généralement son contenu. Une installation propre peut aussi effacer les fichiers du disque sélectionné.</div>
+<h3>Avant de commencer</h3>
+<ol>
+<li>Sauvegarder les documents importants sur un autre support.</li>
+<li>Vérifier la compatibilité du matériel.</li>
+<li>Vérifier l'édition du système et la licence.</li>
+<li>Préparer les pilotes réseau ou de stockage si nécessaire.</li>
+<li>Brancher l'ordinateur sur une alimentation stable.</li>
+</ol>
+</div>
+<div data-lang="ml" hidden>
+<h2>4. Fitaovana sy fanomanana</h2>
+<ul>
+<li>Ordinateur mifanaraka amin'ilay rafitra hapetraka.</li>
+<li>Fitaovana installation ofisialy, ohatra clé USB bootable.</li>
+<li>Chargeur na alimentation azo antoka.</li>
+<li>Internet raha ilaina hisintonana ny rafitra sy ny pilotes.</li>
+<li>Licence ara-dalàna raha takiana.</li>
+</ul>
+<div class="notice"><b>Tandremo :</b> mety ho voafafa ny zavatra ao amin'ny clé USB rehefa amboarina ho bootable. Mety ho voafafa koa ny fichiers ao amin'ny disque voafidy rehefa manao installation propre.</div>
+<h3>Alohan'ny hanombohana</h3>
+<ol>
+<li>Tehirizo any amin'ny toerana hafa ny fichiers manan-danja.</li>
+<li>Hamarino raha mifanaraka amin'ilay OS ny ordinateur.</li>
+<li>Hamarino ny édition sy ny licence.</li>
+<li>Omano ny pilotes réseau na stockage raha ilaina.</li>
+<li>Ataovy azo antoka ny famatsiana herinaratra.</li>
+</ol>
+</div>
+</section>
+
+<section class="card">
+<div data-lang="fr">
+<h2>5. Les étapes d'installation de Windows</h2>
+<p>Les noms des menus peuvent varier selon la version de Windows et le fabricant de l'ordinateur.</p>
+</div>
+<div data-lang="ml" hidden>
+<h2>5. Dingana fametrahana Windows</h2>
+<p>Mety hiova arakaraka ny kinovan'ny Windows sy ny mpanamboatra ny anaran'ny menus.</p>
+</div>
+
+<div class="steps">
+<article class="step">
+<div class="num">1</div>
+<h3 data-lang="fr">Créer le support</h3>
+<h3 data-lang="ml" hidden>Manamboatra support</h3>
+<p data-lang="fr">Télécharger l'outil officiel de Microsoft et créer une clé USB d'installation. Une clé vide d'au moins 8 Go est recommandée.</p>
+<p data-lang="ml" hidden>Sintomy ny fitaovana ofisialin'i Microsoft ary amboary ny clé USB installation. Tsara raha clé USB foana misy toerana 8 Go farafahakeliny.</p>
+</article>
+
+<article class="step">
+<div class="num">2</div>
+<h3 data-lang="fr">Démarrer sur la clé USB</h3>
+<h3 data-lang="ml" hidden>Mampandeha amin'ny USB</h3>
+<p data-lang="fr">Brancher la clé USB, redémarrer l'ordinateur et ouvrir le menu de démarrage (Boot Menu). La touche dépend du modèle.</p>
+<p data-lang="ml" hidden>Ampidiro ny USB, avereno alefa ny ordinateur ary sokafy ny Boot Menu. Miankina amin'ny modèle ny bokotra ampiasaina.</p>
+</article>
+
+<article class="step">
+<div class="num">3</div>
+<h3 data-lang="fr">Choisir la langue</h3>
+<h3 data-lang="ml" hidden>Misafidy ny fiteny</h3>
+<p data-lang="fr">Sélectionner la langue, le format horaire et le clavier, puis cliquer sur Suivant.</p>
+<p data-lang="ml" hidden>Safidio ny fiteny, ny ora ary ny clavier, dia tsindrio Suivant.</p>
+</article>
+
+<article class="step">
+<div class="num">4</div>
+<h3 data-lang="fr">Lancer l'installation</h3>
+<h3 data-lang="ml" hidden>Manomboka ny installation</h3>
+<p data-lang="fr">Cliquer sur Installer maintenant et suivre les instructions affichées.</p>
+<p data-lang="ml" hidden>Tsindrio Installer maintenant ary araho ny toromarika miseho eo amin'ny écran.</p>
+</article>
+
+<article class="step">
+<div class="num">5</div>
+<h3 data-lang="fr">Choisir l'édition</h3>
+<h3 data-lang="ml" hidden>Misafidy ny édition</h3>
+<p data-lang="fr">Choisir l'édition correspondant à la licence. Lire et accepter les conditions applicables.</p>
+<p data-lang="ml" hidden>Safidio ny édition mifanaraka amin'ny licence. Vakio ary ekeo ny fepetra takiana.</p>
+</article>
+
+<article class="step">
+<div class="num">6</div>
+<h3 data-lang="fr">Sélectionner le disque</h3>
+<h3 data-lang="ml" hidden>Misafidy ny disque</h3>
+<p data-lang="fr">Identifier soigneusement le disque et la partition. Ne pas supprimer ni formater une partition sans avoir vérifié les données et le choix prévu.</p>
+<p data-lang="ml" hidden>Fantaro tsara ny disque sy partition. Aza mamafa na manao format raha tsy efa voamarina ny angona sy ny safidy hatao.</p>
+</article>
+
+<article class="step">
+<div class="num">7</div>
+<h3 data-lang="fr">Attendre la copie</h3>
+<h3 data-lang="ml" hidden>Miandry ny fametrahana</h3>
+<p data-lang="fr">Laisser le programme copier les fichiers et redémarrer. Ne pas couper l'alimentation pendant l'opération.</p>
+<p data-lang="ml" hidden>Avelao handika ny fichiers sy hanao redémarrage ny programme. Aza tapahina ny herinaratra mandritra izany.</p>
+</article>
+
+<article class="step">
+<div class="num">8</div>
+<h3 data-lang="fr">Configurer le système</h3>
+<h3 data-lang="ml" hidden>Mandrindra ny rafitra</h3>
+<p data-lang="fr">Configurer le compte, le réseau, la confidentialité et les paramètres proposés.</p>
+<p data-lang="ml" hidden>Amboary ny kaonty, ny réseau, ny confidentialité ary ireo paramètres aseho.</p>
+</article>
+</div>
+</section>
+
+<section class="card">
+<div data-lang="fr">
+<h2>6. Après l'installation</h2>
+<ol>
+<li>Vérifier l'activation et la licence.</li>
+<li>Installer les pilotes appropriés depuis le fabricant.</li>
+<li>Installer les mises à jour de sécurité disponibles.</li>
+<li>Tester le son, le Wi-Fi, le clavier, la souris et l'affichage.</li>
+<li>Installer les logiciels nécessaires.</li>
+<li>Restaurer les documents sauvegardés.</li>
+</ol>
+</div>
+<div data-lang="ml" hidden>
+<h2>6. Rehefa vita ny installation</h2>
+<ol>
+<li>Hamarino ny activation sy licence.</li>
+<li>Apetraho ny pilotes mifanaraka amin'ilay ordinateur.</li>
+<li>Ampidiro ny mises à jour de sécurité misy.</li>
+<li>Andramo ny son, Wi-Fi, clavier, souris ary écran.</li>
+<li>Apetraho ny logiciels ilaina.</li>
+<li>Avereno ireo fichiers efa natao sauvegarde.</li>
+</ol>
+</div>
+</section>
+
+<section class="card">
+<div data-lang="fr">
+<h2>7. Erreurs fréquentes et solutions</h2>
+</div>
+<div data-lang="ml" hidden>
+<h2>7. Olana mahazatra sy vahaolana</h2>
+</div>
+<table>
+<tr><th>Erreur / Olana</th><th>Solution / Vahaolana</th></tr>
+<tr><td>Bootable device not found</td><td>Vérifier la clé USB, le Boot Menu et le disque de démarrage.</td></tr>
+<tr><td>Windows ne peut pas être installé sur ce disque</td><td>Vérifier le mode UEFI/Legacy, le style GPT/MBR et la compatibilité avant toute modification.</td></tr>
+<tr><td>Disque non détecté</td><td>Vérifier les paramètres firmware et les pilotes de stockage nécessaires.</td></tr>
+<tr><td>Pas de Wi-Fi après installation</td><td>Installer le pilote réseau adapté depuis le fabricant.</td></tr>
+<tr><td>Installation interrompue</td><td>Vérifier le support, le fichier d'installation, l'alimentation et l'état du matériel.</td></tr>
+</table>
+<div class="notice">
+<div data-lang="fr"><b>Règle essentielle :</b> ne pas supprimer toutes les partitions simplement pour essayer de corriger une erreur. Identifier d'abord le problème et sauvegarder les données.</div>
+<div data-lang="ml" hidden><b>Fitsipika lehibe :</b> aza fafana daholo ny partitions noho ny erreur fotsiny. Fantaro aloha ny antony ary ataovy sauvegarde ny angona.</div>
+</div>
+</section>
+
+<section class="card">
+<div data-lang="fr">
+<h2>8. Exercice d'application</h2>
+<p>Répondre aux questions suivantes.</p>
+</div>
+<div data-lang="ml" hidden>
+<h2>8. Fanazaran-tena</h2>
+<p>Valio ireto fanontaniana ireto.</p>
+</div>
+
+<div id="quiz">
+<div class="question">
+<p>1. Quel est le rôle d'un système d'exploitation ?</p>
+<label><input type="radio" name="q1" value="a"> Gérer les ressources de l'ordinateur</label>
+<label><input type="radio" name="q1" value="b"> Nettoyer l'écran</label>
+<label><input type="radio" name="q1" value="c"> Remplacer le clavier</label>
+</div>
+
+<div class="question">
+<p>2. À quoi sert une clé USB bootable ?</p>
+<label><input type="radio" name="q2" value="a"> À augmenter la RAM</label>
+<label><input type="radio" name="q2" value="b"> À démarrer un programme d'installation compatible</label>
+<label><input type="radio" name="q2" value="c"> À réparer physiquement un disque</label>
+</div>
+
+<div class="question">
+<p>3. Que faut-il faire avant une installation propre ?</p>
+<label><input type="radio" name="q3" value="a"> Effacer immédiatement tous les disques</label>
+<label><input type="radio" name="q3" value="b"> Débrancher l'écran</label>
+<label><input type="radio" name="q3" value="c"> Sauvegarder les fichiers importants et vérifier le disque cible</label>
+</div>
+
+<div class="question">
+<p>4. Que faut-il faire après l'installation ?</p>
+<label><input type="radio" name="q4" value="a"> Vérifier pilotes, réseau et mises à jour</label>
+<label><input type="radio" name="q4" value="b"> Supprimer les pilotes</label>
+<label><input type="radio" name="q4" value="c"> Formater de nouveau le disque</label>
+</div>
+</div>
+
+<button class="no-print" onclick="corriger()">Corriger mes réponses</button>
+<button class="no-print" onclick="reinitialiser()">Recommencer</button>
+<p id="resultat" class="result" aria-live="polite"></p>
+</section>
+
+<section class="card">
+<div data-lang="fr">
+<h2>9. Travail pratique</h2>
+<p>En binôme, les élèves doivent :</p>
+<ol>
+<li>Identifier un système d'exploitation installé sur un ordinateur.</li>
+<li>Repérer le modèle et les caractéristiques principales de la machine.</li>
+<li>Expliquer le rôle du BIOS/UEFI et du Boot Menu.</li>
+<li>Présenter oralement les étapes d'installation.</li>
+<li>Énumérer les précautions à prendre avant de modifier un disque.</li>
+</ol>
+<p><b>Important :</b> les manipulations réelles d'installation doivent être effectuées sur une machine de test, avec autorisation et sauvegarde, sous la supervision de l'enseignant.</p>
+</div>
+<div data-lang="ml" hidden>
+<h2>9. Asa fampiharana</h2>
+<p>Miara-miasa tsiroaroa ny mpianatra :</p>
+<ol>
+<li>Mamantatra ny système d'exploitation napetraka amin'ny ordinateur.</li>
+<li>Mamantatra ny modèle sy ny toetra fototry ny ordinateur.</li>
+<li>Manazava ny BIOS/UEFI sy ny Boot Menu.</li>
+<li>Milaza am-bava ny dingana fametrahana OS.</li>
+<li>Manonona ny fitandremana alohan'ny hanovana disque.</li>
+</ol>
+<p><b>Zava-dehibe :</b> amin'ny ordinateur fanandramana ihany no hanaovana installation tena izy, rehefa nahazo alalana, nanao sauvegarde ary eo ambany fanaraha-mason'ny mpampianatra.</p>
+</div>
+</section>
+
+<section class="card">
+<h2>🔗 Ressources officielles</h2>
+<p><a href="https://www.microsoft.com/software-download/windows11" target="_blank" rel="noopener">Télécharger Windows 11</a></p>
+<p><a href="https://www.microsoft.com/software-download/windows10" target="_blank" rel="noopener">Télécharger Windows 10</a></p>
+<p><a href="https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/install-windows-from-a-usb-flash-drive" target="_blank" rel="noopener">Guide Microsoft : installation depuis une clé USB</a></p>
+<div class="notice">
+Windows 10 n'est plus pris en charge normalement depuis le 14 octobre 2025. Pour un ordinateur connecté à Internet, vérifier les possibilités de migration ou de support étendu et privilégier un système encore pris en charge.
+</div>
+</section>
+
+</main>
+
+<footer>
+<p>💻 InfoPro | Apprendre • Pratiquer • Réussir</p>
+<p>Mr Tahiry - Informatique 👨‍🏫</p>
+</footer>
+
+<script>
+function setLang(lang){
+  document.querySelectorAll('[data-lang]').forEach(el=>{
+    el.hidden = el.dataset.lang !== lang;
+  });
+  document.documentElement.lang = lang === 'ml' ? 'mg' : 'fr';
+  document.getElementById('frBtn').classList.toggle('active',lang==='fr');
+  document.getElementById('mlBtn').classList.toggle('active',lang==='ml');
+  document.getElementById('headTitle').textContent =
+    lang==='fr'
+    ? "Installation des systèmes d'exploitation"
+    : "Fametrahana ny système d'exploitation";
+  document.getElementById('subtitle').textContent =
+    lang==='fr'
+    ? "Apprendre • Pratiquer • Réussir"
+    : "Mianatra • Mampihatra • Mahomby";
+}
+
+function corriger(){
+  const reponses={q1:'a',q2:'b',q3:'c',q4:'a'};
+  let score=0;
+  let total=Object.keys(reponses).length;
+  for(const q in reponses){
+    const choisi=document.querySelector('input[name="'+q+'"]:checked');
+    if(choisi && choisi.value===reponses[q]) score++;
+  }
+  document.getElementById('resultat').textContent=
+    'Résultat / Vokatra : '+score+' / '+total+
+    ' — '+Math.round(score/total*100)+'%';
+}
+
+function reinitialiser(){
+  document.querySelectorAll('#quiz input[type="radio"]').forEach(el=>el.checked=false);
+  document.getElementById('resultat').textContent='';
+}
+
+setLang('fr');
+</script>
+
+</body>
+</html>

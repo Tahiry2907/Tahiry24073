@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/script.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="js/script.js"></script>
+<title><span>site</span>informatique</title>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">💻 InfoPro</div>
+
+  <nav id="nav">
+<ul class="menu">
+
+<li><a href="index-2.html">Accueil</a></li>
+<li><a href="présentation.html">Présentation</a></li>
+
+<li class="dropdown">
+<a href="#">Cours ▾</a>
+
+<ul class="submenu">
+
+<li class="dropdown">
+<a href="#">Collège ▸</a>
+<ul class="submenu">
+<li><a href="6eme.html">6ème</a></li>
+<li><a href="5eme.html">5ème</a></li>
+<li><a href="4eme.html">4ème</a></li>
+<li><a href="3eme.html">3ème</a></li>
+</ul>
+</li>
+
+<li class="dropdown">
+<a href="#">Lycée ▸</a>
+<ul class="submenu">
+<li><a href="2nd.html">2nde</a></li>
+<li><a href="1ère.html">1ère</a></li>
+<li><a href="TLe.html">Tle</a></li>
+</ul>
+</li>
+
+</ul>
+</li>
+
+<li class="dropdown">
+<a href="#">Exercice ▾</a>
+
+<ul class="submenu">
+
+<li class="dropdown">
+<a href="#">Collège ▸</a>
+<ul class="submenu">
+<li><a href="6eme-exo.html">6ème</a></li>
+<li><a href="5eme-exo.html">5ème</a></li>
+<li><a href="4eme-exo.html">4ème</a></li>
+<li><a href="3eme-exo.html">3ème</a></li>
+</ul>
+</li>
+
+<li class="dropdown">
+<a href="#">Lycée ▸</a>
+<ul class="submenu">
+<li><a href="2nd-exo.html">2nde</a></li>
+<li><a href="1ère-exo.html">1ère</a></li>
+<li><a href="TLe-exo.html">Tle</a></li>
+</ul>
+</li>
+</ul>
+
+</li>
+
+<li><a href="contacts.html">contacts</a></li>
+<li><a href="login.html">Login</a></li>
+<li><a href="admin.html">IT Admin</a></li>
+</ul>
+</nav>
+
+  <div class="langue">
+    <a href="index.html" >🇫🇷</a>
+    <a href="index-mg.html" >🇲🇬</a>
+
+  </div>
+</header>
+<br>
+
+<section class="hero">
+  <h1>Bienvenue sur <span>Informa</span>tique</h1>
+  <p>Apprendre l'informatique de manière moderne et interactive</p>
+
+</section>
+
+<section class="cards">
+
+  <div class="card">
+    <i class="fas fa-laptop-code"></i>
+    <h3>Cours</h3>
+    <p>Apprenez excel, word, powerpoint, HTML, CSS, Binaire et plus</p>
+  </div>
+
+  <div class="card">
+    <i class="fas fa-gamepad"></i>
+    <h3>Quiz</h3>
+    <p>Amusez-vous avec des quiz interactifs</p>
+  </div>
+
+  <div class="card">
+    <i class="fas fa-certificate"></i>
+    <h3>Certificat</h3>
+    <p>Obtenez votre certificat facilement</p>
+  </div>
+
+</section>
+<script>
+const data = {
+    fr: {
+        title: "Bienvenue sur InfoPro",
+        desc: "Apprendre l'informatique de manière moderne",
+        btn: "Commencer",
+        home: "Accueil",
+        pres: "Présentation",
+        news: "Actualité",
+        c1: "Cours",
+        c1d: "Apprenez HTML, CSS, Binaire",
+        c2: "Jeux",
+        c2d: "Quiz interactifs",
+        c3: "Certificat",
+        c3d: "Obtenez votre certificat"
+    },
+    ml: {
+        title: "Tongasoa eto amin'ny InfoPro",
+        desc: "Mianara informatika amin'ny fomba maoderina",
+        btn: "Hanomboka",
+        home: "Fandraisana",
+        pres: "Mombamomba",
+        news: "Vaovao",
+        c1: "Lesona",
+        c1d: "Mianara HTML, CSS, Binaire",
+        c2: "Lalao",
+        c2d: "Quiz mahaliana",
+        c3: "Mari-pahaizana",
+        c3d: "Mahazoa certificat"
+    }
+};
+
+function setLang(lang){
+    localStorage.setItem("lang", lang);
+    applyLang(lang);
+}
+
+function applyLang(lang){
+    document.getElementById("title").innerText = data[lang].title;
+    document.getElementById("desc").innerText = data[lang].desc;
+    document.getElementById("btn").innerText = data[lang].btn;
+    document.getElementById("nav-home").innerText = data[lang].home;
+    document.getElementById("nav-pres").innerText = data[lang].pres;
+    document.getElementById("nav-news").innerText = data[lang].news;
+    document.getElementById("c1").innerText = data[lang].c1;
+    document.getElementById("c1d").innerText = data[lang].c1d;
+    document.getElementById("c2").innerText = data[lang].c2;
+    document.getElementById("c2d").innerText = data[lang].c2d;
+    document.getElementById("c3").innerText = data[lang].c3;
+    document.getElementById("c3d").innerText = data[lang].c3d;
+}
+
+window.onload = () => {
+    const lang = localStorage.getItem("lang") || "fr";
+    applyLang(lang);
+};
+</script>
+<footer>
+  <pre>
+  © 2026 InfoPro - Tous droits réservés
+      TAHIRINIAINA Jean-Jacque
+  </pre>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<script src="js/script.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Site Informatique </title>
+
+</head>
+<style>
+/* MENU */
+.menu{
+    display:flex;
+    list-style:none;
+}
+
+.menu li{
+    position:relative;
+}
+
+.menu a{
+    display:block;
+    padding:10px;
+    color:white;
+    text-decoration:none;
+}
+
+/* SUBMENU */
+.submenu{
+    display:none;
+    position:absolute;
+    background:#0d6efd;
+    top:100%;
+    left:0;
+    min-width:180px;
+}
+
+.submenu li{
+    position:relative;
+}
+
+/* 2e niveau */
+.submenu .submenu{
+    left:100%;
+    top:0;
+}
+
+/* HOVER PC */
+.menu li:hover > .submenu{
+    display:block;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .menu{
+        flex-direction:column;
+    }
+
+    .submenu{
+        position:static;
+    }
+}
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background:#3184d1ea;
+  color: lab(98.64% 0.18 -0.49);
+}
+
+/* HEADER */
+header {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  color: oklab(52.089% -0.01057 -0.23061);
+  background: #021f3b;
+}
+
+/* DROPDOWN */
+nav ul li ul{
+    display:none;
+    position:absolute;
+    background:#0d6efd;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+nav a {
+  margin: 0 15px;
+  color: white;
+  text-decoration: none;
+  position: relative;
+}
+
+nav a::after {
+  content:"";
+  width: 0%;
+  height: 2px;
+  background: #00c6ff;
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  transition: 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* LANGUE */
+.langue a {
+  margin-left: 10px;
+  color: #00c6ff;
+  text-decoration: none;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  margin-top: 80px;
+}
+
+.hero h1 {
+  font-size: 45px;
+}
+
+.hero span {
+  color: #00c6ff;
+}
+
+.hero p {
+  margin: 20px 0;
+  font-size: 18px;
+}
+
+/* BUTTON */
+.btn {
+  padding: 12px 25px;
+  background: #00c6ff;
+  border: none;
+  border-radius: 30px;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: white;
+}
+
+/* CARDS */
+.cards {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+  gap: 20px;
+}
+
+.card {
+  background: rgba(255,255,255,0.1);
+  padding: 20px;
+  width: 250px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card i {
+  font-size: 30px;
+  margin-bottom: 10px;
+  color: hsl(0, 80%, 53%);
+}
+.footer-pro h2 {
+  margin-bottom: 10px;
+  color: #00e5ff;
+}
+
+.footer-pro p {
+  margin: 8px 0;
+  font-size: 14px;
+}
+.footer-pro {
+  background: linear-gradient(270deg, #141e30, #243b55);
+  color: white;
+  text-align: center;
+  padding: 25px;
+  margin-top: 40px;
+  border-radius: 15px 15px 0 0;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 -5px 15px rgba(0,0,0,0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+/* effet lumière animé */
+.footer-pro::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
+  animation: shine 5s infinite;
+}
+
+</style>
+
+<body>
+
+<header>
+  <div class="logo">💻 InfoPro</div>
+
+  <nav id="nav">
+<ul class="menu">
+<li class="dropdown">
+<a href="#">Cours ▾</a>
+
+<ul class="submenu">
+
+<li class="dropdown">
+<a href="#">Collège ▸</a>
+<ul class="submenu">
+<li><a href="6ème.html">6ème</a></li>
+<li><a href="5ème.html">5ème</a></li>
+<li><a href="4ème.html">4ème</a></li>
+<li><a href="3ème.html">3ème</a></li>
+</ul>
+</li>
+
+<li class="dropdown">
+<a href="#">Lycée ▸</a>
+<ul class="submenu">
+<li><a href="2nd2.html">2nde</a></li>
+<li><a href="1ère.html">1ère</a></li>
+<li><a href="TLe.html">Tle</a></li>
+</ul>
+</li>
+
+</ul>
+</li>
+
+<li class="dropdown">
+<a href="#">Exercice ▾</a>
+
+<ul class="submenu">
+
+<li class="dropdown">
+<a href="#">Collège ▸</a>
+<ul class="submenu">
+<li><a href="6eme-exo.html">6ème</a></li>
+<li><a href="5eme-exo.html">5ème</a></li>
+<li><a href="4eme-exo.html">4ème</a></li>
+<li><a href="3eme-exo.html">3ème</a></li>
+</ul>
+</li>
+
+<li class="dropdown">
+<a href="#">Lycée ▸</a>
+<ul class="submenu">
+<li><a href="2nd-exo.html">2nde</a></li>
+<li><a href="1ère-exo.html">1ère</a></li>
+<li><a href="TLe-exo.html">Tle</a></li>
+<li><img src="sary/maintenance.png">maintenance</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+  <div class="langue">
+    <a href="index.html" >🇫🇷</a>
+    <a href="index-mg.html" >🇲🇬</a>
+  </div>
+</header>
+<section class="hero">
+  <h1>Bienvenue sur <span>Informa</span>tique</h1>
+  <p>Apprendre l'informatique de manière moderne et interactive</p>
+</section>
+
+<section class="cards">
+
+  <div class="card">
+    <i class="fas fa-laptop-code"></i>
+    <h3>Cours</h3>
+    <p>Apprenez excel, word, powerpoint, HTML, CSS, Binaire et plus</p>
+  </div>
+
+  <div class="card">
+    <i class="fas fa-gamepad"></i>
+    <h3>Quiz</h3>
+    <p>Amusez-vous avec des quiz interactifs</p>
+  </div>
+</section>
+<footer class="footer-pro">
+
+  <h2>💻 Mr Tahiry - Informatique 👨‍🏫</h2>
+
+  <p>📅 <span id="dateFooter"></span></p>
+
+  <div class="socials">
+    <a href="#">📘 Facebook</a>
+    <a href="#">💬 WhatsApp</a>
+    <a href="#">📧 Email</a>
+  </div>
+
+  <p class="devise">🚀 Apprendre • Pratiquer • Réussir 🌟</p>
+
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,1208 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>CMD | Cours Informatique - Mr Tahiry</title><link rel="stylesheet" href="style.css"><style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:
+        radial-gradient(circle at top,#0f172a,#020617);
+    color:white;
+    min-height:100vh;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    background:rgba(15,23,42,.95);
+    backdrop-filter:blur(12px);
+
+    padding:15px 20px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+
+    border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+.logo{
+    font-size:20px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#38bdf8;
+}
+
+
+/* =====================================================
+   LANGUAGE
+===================================================== */
+
+.lang{
+    display:flex;
+    gap:5px;
+}
+
+.lang button{
+
+    padding:8px 14px;
+
+    border:none;
+    border-radius:20px;
+
+    cursor:pointer;
+
+    background:#e2e8f0;
+    color:#0f172a;
+
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.lang button:hover{
+    transform:translateY(-2px);
+}
+
+.lang button.active{
+    background:#38bdf8;
+    color:#082f49;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    text-align:center;
+    padding:50px 20px 35px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(14,165,233,.15),
+            rgba(59,130,246,.08)
+        );
+}
+
+.hero h1{
+    font-size:clamp(28px,6vw,48px);
+    margin-bottom:12px;
+}
+
+.hero h1 span{
+    color:#38bdf8;
+}
+
+.hero p{
+    max-width:750px;
+    margin:auto;
+    color:#cbd5e1;
+    line-height:1.7;
+}
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+.search-box{
+
+    width:90%;
+    max-width:700px;
+
+    margin:25px auto;
+
+    position:relative;
+}
+
+.search-box input{
+
+    width:100%;
+
+    padding:15px 20px;
+
+    border:none;
+    border-radius:30px;
+
+    outline:none;
+
+    font-size:16px;
+}
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.container{
+
+    width:92%;
+    max-width:1100px;
+
+    margin:30px auto;
+}
+
+
+/* =====================================================
+   SECTION
+===================================================== */
+
+.section{
+
+    background:#1e293b;
+
+    margin:20px 0;
+
+    padding:25px;
+
+    border-radius:18px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.25);
+}
+
+.section h2{
+
+    color:#38bdf8;
+
+    margin-bottom:15px;
+}
+
+.section p{
+
+    color:#cbd5e1;
+
+    line-height:1.8;
+}
+
+
+/* =====================================================
+   INFO
+===================================================== */
+
+.info{
+
+    margin-top:15px;
+
+    padding:15px;
+
+    border-left:5px solid #38bdf8;
+
+    background:#0f172a;
+
+    border-radius:8px;
+
+    color:#cbd5e1;
+}
+
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+.progress-box{
+
+    margin:25px 0;
+}
+
+.progress-text{
+
+    display:flex;
+    justify-content:space-between;
+
+    margin-bottom:7px;
+
+    color:#cbd5e1;
+
+    font-size:14px;
+}
+
+.progress{
+
+    height:9px;
+
+    background:#334155;
+
+    border-radius:20px;
+
+    overflow:hidden;
+}
+
+.progress-bar{
+
+    height:100%;
+
+    width:0%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #38bdf8,
+            #22c55e
+        );
+
+    transition:.4s;
+}
+
+
+/* =====================================================
+   COMMAND GRID
+===================================================== */
+
+.command-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(220px,1fr));
+
+    gap:15px;
+
+    margin-top:20px;
+}
+
+
+/* =====================================================
+   COMMAND CARD
+===================================================== */
+
+.card{
+
+    display:block;
+
+    text-decoration:none;
+
+    background:#0f172a;
+
+    color:white;
+
+    padding:20px;
+
+    border-radius:15px;
+
+    border:1px solid #334155;
+
+    transition:.3s;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.card::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:0;
+
+    width:4px;
+    height:100%;
+
+    background:#38bdf8;
+}
+
+.card:hover{
+
+    transform:
+        translateY(-6px)
+        scale(1.01);
+
+    border-color:#38bdf8;
+
+    box-shadow:
+        0 12px 25px rgba(0,0,0,.35);
+}
+
+.card-icon{
+
+    font-size:30px;
+
+    margin-bottom:8px;
+}
+
+.card-title{
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    margin-bottom:6px;
+}
+
+.card-description{
+
+    color:#94a3b8;
+
+    font-size:14px;
+
+    line-height:1.5;
+}
+
+
+/* =====================================================
+   CATEGORY
+===================================================== */
+
+.category-title{
+
+    margin-top:35px;
+    margin-bottom:15px;
+
+    color:#f8fafc;
+
+    font-size:22px;
+}
+
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+.btn{
+
+    display:inline-block;
+
+    padding:11px 18px;
+
+    background:#0284c7;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:10px;
+
+    margin-top:15px;
+
+    border:none;
+
+    cursor:pointer;
+
+    font-weight:bold;
+}
+
+.btn:hover{
+    background:#0369a1;
+}
+
+
+/* =====================================================
+   NO RESULT
+===================================================== */
+
+.no-result{
+
+    display:none;
+
+    text-align:center;
+
+    padding:30px;
+
+    color:#94a3b8;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+
+    margin-top:50px;
+
+    padding:30px 15px;
+
+    text-align:center;
+
+    background:#020617;
+
+    border-top:1px solid #1e293b;
+}
+
+footer strong{
+
+    color:#38bdf8;
+
+    font-size:18px;
+}
+
+
+/* =====================================================
+   TOP BUTTON
+===================================================== */
+
+.top{
+
+    position:fixed;
+
+    right:20px;
+    bottom:20px;
+
+    width:45px;
+    height:45px;
+
+    border-radius:50%;
+
+    background:#0284c7;
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    text-decoration:none;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.4);
+
+    z-index:500;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:650px){
+
+    header{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+    .hero{
+
+        padding-top:35px;
+
+    }
+
+    .section{
+
+        padding:18px;
+
+    }
+
+    .command-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+.hidden{
+    display:none !important;
+}
+
+</style></head><body><!-- =====================================================
+     HEADER
+===================================================== --><header><div class="logo">💻 <span class="fr">Cours CMD</span>
+<span class="mg hidden">Lesona CMD</span>
+
+</div><div class="lang"><button
+class="active"
+onclick="setLang('fr',this)">
+🇫🇷 FR
+</button>
+
+<button
+onclick="setLang('mg',this)">
+🇲🇬 MG
+</button>
+
+</div></header><!-- =====================================================
+     HERO
+===================================================== --><section class="hero"><h1>💻
+<span class="fr">
+Invite de commande CMD
+</span>
+
+<span class="mg hidden">
+CMD — Invite de commande
+</span></h1><p class="fr">Découvrez les principales commandes Windows,
+leur rôle et leur utilisation pratique.
+
+</p><p class="mg hidden">Ianaro ireo commandes lehibe ao amin'ny Windows,
+ny asany ary ny fomba fampiasana azy.
+
+</p><div class="search-box"><input
+type="text"
+id="search"
+placeholder="🔎 Rechercher une commande..."
+onkeyup="searchCommand()">
+
+</div></section><div class="container"><!-- =====================================================
+     INTRODUCTION
+===================================================== --><div class="section"><h2>📌
+
+<span class="fr">
+Qu'est-ce que CMD ?
+</span><span class="mg hidden">
+Inona ny CMD ?
+</span></h2><p class="fr">CMD signifie <strong>Command Prompt</strong>.
+C'est un outil de Windows qui permet d'interagir
+avec le système à l'aide de commandes textuelles.
+
+</p><p class="mg hidden">CMD dia fanafohezana ny
+<strong>Command Prompt</strong>.
+Izy dia fitaovana ao amin'ny Windows izay ahafahana
+mifehy sy manao asa amin'ny alalan'ny commandes soratana.
+
+</p><div class="info"><strong class="fr">
+💡 Exemple :
+</strong><strong class="mg hidden">
+💡 Ohatra :
+</strong><br><code>
+dir
+</code><br><span class="fr">
+Cette commande affiche le contenu du dossier courant.
+</span><span class="mg hidden">
+Ity commande ity dia mampiseho ireo fichier sy dossier
+ao amin'ilay dossier misy anao.
+</span></div></div><!-- =====================================================
+     OUVERTURE
+===================================================== --><div class="section"><h2>🚀
+
+<span class="fr">
+Comment ouvrir CMD ?
+</span><span class="mg hidden">
+Ahoana no hanokafana CMD ?
+</span></h2><p class="fr">Méthode rapide :
+
+</p><div class="info"><strong>
+Windows + R
+</strong>→
+
+<strong>
+cmd
+</strong>→
+
+<strong>
+Entrée
+</strong></div><p class="mg hidden">Fomba haingana :
+
+</p><div class="info mg hidden"><strong>
+Windows + R
+</strong>→
+
+<strong>
+cmd
+</strong>→
+
+<strong>
+Entrée
+</strong></div></div><!-- =====================================================
+     STRUCTURE
+===================================================== --><div class="section"><h2>🧠
+
+<span class="fr">
+Comprendre une commande
+</span><span class="mg hidden">
+Fahatakarana ny commande
+</span></h2><div class="info"><code>
+commande [option] [paramètre]
+</code></div><p class="fr">Une commande peut être accompagnée d'options
+et de paramètres selon son utilisation.
+
+</p><p class="mg hidden">Ny commande iray dia mety hisy option sy paramètre
+araka ny asa tiana hatao.
+
+</p></div><!-- =====================================================
+     PROGRESS
+===================================================== --><div class="progress-box"><div class="progress-text"><span class="fr">
+📚 Progression des commandes
+</span><span class="mg hidden">
+📚 Fandrosoana amin'ny commandes
+</span><span id="progressPercent">
+0%
+</span></div><div class="progress"><div
+class="progress-bar"
+id="progressBar">
+</div></div></div><!-- =====================================================
+     COMMANDES DE BASE
+===================================================== --><h2 class="category-title">📂
+<span class="fr">
+Commandes de base
+</span>
+
+<span class="mg hidden">
+Commandes fototra
+</span></h2><div class="command-grid"><a
+class="card command"
+href="Commande-de-base.html">
+
+<div class="card-icon">
+⌨️
+</div><div class="card-title">
+Commande de base
+</div><div class="card-description fr">
+Les commandes essentielles pour débuter avec CMD.
+</div><div class="card-description mg hidden">
+Ireo commandes fototra ilaina ho an'ny vao manomboka.
+</div></a><a
+class="card command"
+href="command-cd.html">
+
+<div class="card-icon">
+📁
+</div><div class="card-title">
+CD
+</div><div class="card-description fr">
+Se déplacer entre les dossiers.
+</div><div class="card-description mg hidden">
+Mifindra ao anaty dossier samihafa.
+</div></a><a
+class="card command"
+href="dir.html">
+
+<div class="card-icon">
+📋
+</div><div class="card-title">
+DIR
+</div><div class="card-description fr">
+Afficher les fichiers et dossiers.
+</div><div class="card-description mg hidden">
+Mampiseho ireo fichier sy dossier.
+</div></a><a
+class="card command"
+href="mkdir.html">
+
+<div class="card-icon">
+📂
+</div><div class="card-title">
+MKDIR
+</div><div class="card-description fr">
+Créer un nouveau dossier.
+</div><div class="card-description mg hidden">
+Mamorona dossier vaovao.
+</div></a><a
+class="card command"
+href="del.html">
+
+<div class="card-icon">
+🗑️
+</div><div class="card-title">
+DEL
+</div><div class="card-description fr">
+Supprimer des fichiers.
+</div><div class="card-description mg hidden">
+Mamafa fichier.
+</div></a><a
+class="card command"
+href="cls.html">
+
+<div class="card-icon">
+🧹
+</div><div class="card-title">
+CLS
+</div><div class="card-description fr">
+Nettoyer l'écran CMD.
+</div><div class="card-description mg hidden">
+Manadio ny écran CMD.
+</div></a><a
+class="card command"
+href="rmdir-rd.html">
+
+<div class="card-icon">
+📂
+</div><div class="card-title">
+RMDIR / RD
+</div><div class="card-description fr">
+Supprimer un dossier.
+</div><div class="card-description mg hidden">
+Mamafa dossier.
+</div></a></div><!-- =====================================================
+     FICHIERS
+===================================================== --><h2 class="category-title">📄
+<span class="fr">
+Gestion des fichiers
+</span>
+
+<span class="mg hidden">
+Fitantanana fichier
+</span></h2><div class="command-grid"><a
+class="card command"
+href="copy-xcopy-robocopy.html">
+
+<div class="card-icon">
+📑
+</div><div class="card-title">
+COPY / XCOPY / ROBOCOPY
+</div><div class="card-description fr">
+Copier des fichiers et dossiers.
+</div><div class="card-description mg hidden">
+Mandika fichier sy dossier.
+</div></a><a
+class="card command"
+href="move.html">
+
+<div class="card-icon">
+🚚
+</div><div class="card-title">
+MOVE
+</div><div class="card-description fr">
+Déplacer des fichiers.
+</div><div class="card-description mg hidden">
+Mamindra fichier.
+</div></a><a
+class="card command"
+href="attrib.html">
+
+<div class="card-icon">
+🔐
+</div><div class="card-title">
+ATTRIB
+</div><div class="card-description fr">
+Afficher ou modifier les attributs.
+</div><div class="card-description mg hidden">
+Mijery na manova attribut fichier.
+</div></a><a
+class="card command"
+href="formatage.html">
+
+<div class="card-icon">
+💾
+</div><div class="card-title">
+FORMAT
+</div><div class="card-description fr">
+Formater un support de stockage.
+</div><div class="card-description mg hidden">
+Manao formatage amin'ny support de stockage.
+</div></a></div><!-- =====================================================
+     SYSTEME
+===================================================== --><h2 class="category-title">⚙️
+<span class="fr">
+Système Windows
+</span>
+
+<span class="mg hidden">
+Système Windows
+</span></h2><div class="command-grid"><a
+class="card command"
+href="tasklist.html">
+
+<div class="card-icon">
+📊
+</div><div class="card-title">
+TASKLIST
+</div><div class="card-description fr">
+Afficher les processus actifs.
+</div><div class="card-description mg hidden">
+Mampiseho processus mandeha.
+</div></a><a
+class="card command"
+href="taskkill.html">
+
+<div class="card-icon">
+⛔
+</div><div class="card-title">
+TASKKILL
+</div><div class="card-description fr">
+Arrêter un processus.
+</div><div class="card-description mg hidden">
+Manajanona processus.
+</div></a><a
+class="card command"
+href="systeminfo.html">
+
+<div class="card-icon">
+💻
+</div><div class="card-title">
+SYSTEMINFO
+</div><div class="card-description fr">
+Afficher les informations système.
+</div><div class="card-description mg hidden">
+Mampiseho information momba ny système.
+</div></a><a
+class="card command"
+href="shutdown.html">
+
+<div class="card-icon">
+🔌
+</div><div class="card-title">
+SHUTDOWN
+</div><div class="card-description fr">
+Gérer l'arrêt ou le redémarrage.
+</div><div class="card-description mg hidden">
+Mifehy arrêt na redémarrage.
+</div></a><a
+class="card command"
+href="diskpart.html">
+
+<div class="card-icon">
+💽
+</div><div class="card-title">
+DISKPART
+</div><div class="card-description fr">
+Gestion avancée des disques.
+</div><div class="card-description mg hidden">
+Fitantanana disque amin'ny fomba avancé.
+</div></a></div><!-- =====================================================
+     RESEAU
+===================================================== --><h2 class="category-title">🌐
+<span class="fr">
+Réseau
+</span>
+
+<span class="mg hidden">
+Réseau / Tambajotra
+</span></h2><div class="command-grid"><a
+class="card command"
+href="ipconfig.html">
+
+<div class="card-icon">
+🌐
+</div><div class="card-title">
+IPCONFIG
+</div><div class="card-description fr">
+Afficher la configuration réseau.
+</div><div class="card-description mg hidden">
+Mampiseho configuration réseau.
+</div></a><a
+class="card command"
+href="ping.html">
+
+<div class="card-icon">
+📡
+</div><div class="card-title">
+PING
+</div><div class="card-description fr">
+Tester la communication réseau.
+</div><div class="card-description mg hidden">
+Mitsapa communication réseau.
+</div></a><a
+class="card command"
+href="netstat.html">
+
+<div class="card-icon">
+🔗
+</div><div class="card-title">
+NETSTAT
+</div><div class="card-description fr">
+Afficher certaines connexions réseau.
+</div><div class="card-description mg hidden">
+Mampiseho connexion réseau sasantsasany.
+</div></a><a
+class="card command"
+href="tracert-pathping.html">
+
+<div class="card-icon">
+🛰️
+</div><div class="card-title">
+TRACERT / PATHPING
+</div><div class="card-description fr">
+Analyser le chemin d'une connexion réseau.
+</div><div class="card-description mg hidden">
+Mandrefy sy mandinika ny lalan'ny connexion réseau.
+</div></a></div><!-- =====================================================
+     AVANCE
+===================================================== --><h2 class="category-title">🔥
+<span class="fr">
+Commandes avancées
+</span>
+
+<span class="mg hidden">
+Commandes avancées
+</span></h2><div class="command-grid"><a
+class="card command"
+href="commande-avancé.html">
+
+<div class="card-icon">
+⚡
+</div><div class="card-title">
+Commandes avancées
+</div><div class="card-description fr">
+Pour aller plus loin avec CMD.
+</div><div class="card-description mg hidden">
+Ho an'ny fianarana CMD amin'ny ambaratonga avancé.
+</div></a></div><!-- =====================================================
+     CONSEIL
+===================================================== --><div class="section"><h2>💡
+<span class="fr">
+Conseils pour apprendre CMD
+</span>
+
+<span class="mg hidden">
+Torohevitra hianarana CMD
+</span></h2><ul class="fr"><li>
+Commencez par les commandes de base.
+</li><li>
+Testez les commandes dans un dossier de travail.
+</li><li>
+Lisez attentivement les messages affichés par CMD.
+</li><li>
+N'utilisez pas une commande système inconnue sans comprendre son rôle.
+</li><li>
+Faites des exercices régulièrement.
+</li></ul><ul class="mg hidden"><li>
+Atombohy amin'ny commandes fototra.
+</li><li>
+Manaova test ao anaty dossier natokana ho an'ny fanazaran-tena.
+</li><li>
+Vakio tsara ireo message avoakan'ny CMD.
+</li><li>
+Aza mampiasa commande système tsy fantatra raha tsy fantatrao ny asany.
+</li><li>
+Manaova fanazaran-tena matetika.
+</li></ul></div><!-- =====================================================
+     NO RESULT
+===================================================== --><div
+id="noResult"
+class="no-result">🔎
+<span class="fr">
+Aucune commande trouvée.
+</span>
+
+<span class="mg hidden">
+Tsy nahitana commande.
+</span></div></div><!-- =====================================================
+     TOP
+===================================================== --><a
+href="#top"
+class="top">
+
+⬆️
+
+</a><!-- =====================================================
+     FOOTER
+===================================================== --><footer><strong>
+💻 Mr Tahiry - Informatique 👨‍🏫
+</strong><br><br>
+
+<span class="fr">
+Cours CMD • Windows • Informatique • 2026
+</span><span class="mg hidden">
+Lesona CMD • Windows • Informatique • 2026
+</span></footer><script>
+
+/* =====================================================
+   LANGUAGE
+===================================================== */
+
+function setLang(lang,button){
+
+    const fr =
+        document.querySelectorAll(".fr");
+
+    const mg =
+        document.querySelectorAll(".mg");
+
+
+    if(lang === "fr"){
+
+        fr.forEach(el=>{
+            el.classList.remove("hidden");
+        });
+
+        mg.forEach(el=>{
+            el.classList.add("hidden");
+        });
+
+    }
+
+    else{
+
+        fr.forEach(el=>{
+            el.classList.add("hidden");
+        });
+
+        mg.forEach(el=>{
+            el.classList.remove("hidden");
+        });
+
+    }
+
+
+    document
+    .querySelectorAll(".lang button")
+    .forEach(btn=>{
+        btn.classList.remove("active");
+    });
+
+
+    button.classList.add("active");
+
+}
+
+
+/* =====================================================
+   SEARCH COMMAND
+===================================================== */
+
+function searchCommand(){
+
+    let input =
+        document
+        .getElementById("search")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    let cards =
+        document.querySelectorAll(".command");
+
+
+    let visible = 0;
+
+
+    cards.forEach(card=>{
+
+        let text =
+            card.innerText.toLowerCase();
+
+
+        if(text.includes(input)){
+
+            card.style.display="block";
+
+            visible++;
+
+        }
+
+        else{
+
+            card.style.display="none";
+
+        }
+
+    });
+
+
+    document
+    .getElementById("noResult")
+    .style.display =
+        visible === 0
+        ? "block"
+        : "none";
+
+
+    updateProgress(input);
+
+}
+
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+function updateProgress(search=""){
+
+    let cards =
+        document.querySelectorAll(".command");
+
+
+    let total =
+        cards.length;
+
+
+    let completed =
+        document.querySelectorAll(
+            ".command.visited"
+        ).length;
+
+
+    let percent =
+        total > 0
+        ? Math.round((completed / total)*100)
+        : 0;
+
+
+    document
+    .getElementById("progressBar")
+    .style.width =
+        percent + "%";
+
+
+    document
+    .getElementById("progressPercent")
+    .innerText =
+        percent + "%";
+
+}
+
+
+/* =====================================================
+   MARQUER UNE PAGE VISITEE
+===================================================== */
+
+document
+.querySelectorAll(".command")
+.forEach(card=>{
+
+    card.addEventListener("click",function(){
+
+        this.classList.add("visited");
+
+        localStorage.setItem(
+            "cmd_" + this.getAttribute("href"),
+            "visited"
+        );
+
+        updateProgress();
+
+    });
+
+});
+
+
+/* =====================================================
+   RESTAURER PROGRESSION
+===================================================== */
+
+document
+.querySelectorAll(".command")
+.forEach(card=>{
+
+    let key =
+        "cmd_" + card.getAttribute("href");
+
+
+    if(localStorage.getItem(key)){
+
+        card.classList.add("visited");
+
+    }
+
+});
+
+
+updateProgress();
+
+</script></body>
+</html>

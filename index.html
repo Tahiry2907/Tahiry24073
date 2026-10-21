@@ -1,0 +1,659 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#061a2e">
+<meta name="description" content="InfoPro : cours, exercices, programmation et jeux éducatifs.">
+<title>Informatique | TICE</title>
+
+<style>
+/* ================= BASE ================= */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ font-family:"Segoe UI",Arial,sans-serif;
+ background:linear-gradient(135deg,#061a2e,#083b66,#075985,#0f766e);
+ color:white;min-height:100vh;line-height:1.7
+}
+a,button{-webkit-tap-highlight-color:transparent}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+img{max-width:100%}
+
+/* ================= HEADER COMPACT ================= */
+header{
+ position:sticky;top:0;z-index:9999;
+ background:rgba(2,31,59,.97);
+ border-bottom:1px solid rgba(0,229,255,.2);
+ box-shadow:0 5px 25px #0004;
+ backdrop-filter:blur(15px)
+}
+.header-haut{
+ min-height:68px;padding:10px 4%;
+ display:flex;align-items:center;
+ justify-content:space-between;gap:12px
+}
+.logo{font-size:25px;font-weight:800;white-space:nowrap}
+.logo span{color:#00e5ff}
+.header-actions{display:flex;align-items:center;gap:7px}
+.btn-langue,.btn-menu{
+ border:1px solid #ffffff30;border-radius:10px;
+ padding:9px 12px;color:white;background:#ffffff0e;
+ font-weight:bold
+}
+.btn-langue.actif{background:#00c6ff;color:#061a2e}
+.btn-menu{background:#00c6ff;color:#061a2e}
+.btn-langue:hover,.btn-menu:hover{filter:brightness(1.12)}
+
+/* ================= MENU PRINCIPAL ================= */
+#menuPrincipal{
+ display:none;padding:12px 4% 18px;
+ border-top:1px solid #ffffff14;
+ max-height:75vh;overflow-y:auto
+}
+#menuPrincipal.menu-ouvert{display:block}
+.menu-grille{
+ display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:10px
+}
+.menu-item{position:relative;min-width:0}
+.menu-lien,.menu-bouton{
+ display:flex;align-items:center;justify-content:space-between;
+ width:100%;padding:11px 13px;gap:8px;
+ border:1px solid #ffffff18;border-radius:10px;
+ color:white;background:#ffffff09;text-align:left;
+ font-weight:600;font-size:14px
+}
+.menu-lien:hover,.menu-bouton:hover,
+.menu-bouton[aria-expanded="true"]{
+ background:#00c6ff;color:#061a2e
+}
+.sous-menu{
+ display:none;margin-top:5px;padding:7px;
+ background:#04182b;border:1px solid #00e5ff35;
+ border-radius:12px
+}
+.sous-menu.ouvert{display:block}
+.sous-menu a{
+ display:block;padding:9px 11px;border-radius:7px;
+ font-size:14px;overflow-wrap:anywhere
+}
+.sous-menu a:hover{background:#00c6ff;color:#061a2e}
+.sous-titre{
+ color:#67e8f9;font-size:12px;font-weight:bold;
+ padding:9px 10px 4px;text-transform:uppercase
+}
+.menu-note{font-size:12px;color:#bfdbfe;margin-top:12px}
+
+/* ================= HERO ================= */
+.hero{
+ min-height:440px;padding:70px 5%;
+ display:flex;align-items:center;justify-content:center;
+ text-align:center;position:relative;overflow:hidden
+}
+.hero-contenu{max-width:850px;position:relative;z-index:1}
+.hero h1{
+ font-size:clamp(36px,6vw,65px);
+ line-height:1.2;margin-bottom:20px;
+ animation:fadeDown .8s ease
+}
+.hero h1 span{color:#00e5ff}
+.hero p{font-size:18px;color:#dbeafe;margin:12px auto;max-width:760px}
+.slogan{font-size:17px;font-weight:bold;color:#facc15;margin-top:22px}
+.hero-boutons{
+ display:flex;justify-content:center;flex-wrap:wrap;
+ gap:12px;margin-top:25px
+}
+.btn{
+ display:inline-block;padding:12px 23px;
+ border-radius:30px;font-weight:bold;transition:.25s
+}
+.btn-principal{background:#00c6ff;color:#061a2e}
+.btn-secondaire{border:1px solid #ffffff60;background:#ffffff0c}
+.btn:hover{transform:translateY(-3px);filter:brightness(1.1)}
+
+/* ================= SECTIONS ================= */
+section.contenu{padding:38px 5%}
+.titre-section{text-align:center;margin:0 auto 25px;max-width:800px}
+.titre-section h2{font-size:clamp(24px,4vw,34px);line-height:1.3;margin-bottom:8px}
+.titre-section p{color:#bfdbfe}
+.grille{
+ max-width:1150px;margin:auto;
+ display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px
+}
+.carte{
+ padding:25px;border-radius:20px;text-align:center;
+ background:#ffffff10;border:1px solid #ffffff20;
+ box-shadow:0 12px 30px #0002;transition:.25s;
+ position:relative;overflow:hidden
+}
+.carte:before{
+ content:"";position:absolute;top:0;left:0;width:100%;height:4px;
+ background:linear-gradient(90deg,#00c6ff,#22d3ee,#22c55e)
+}
+.carte:hover{transform:translateY(-5px);background:#ffffff18}
+.icone{font-size:42px;margin-bottom:10px}
+.carte h3{color:#67e8f9;font-size:21px;margin-bottom:10px}
+.carte p{color:#dbeafe;margin-bottom:18px}
+.btn-carte{
+ display:inline-block;background:#00c6ff;color:#061a2e;
+ border-radius:25px;padding:9px 17px;font-weight:bold
+}
+.btn-carte:hover{background:#a5f3fc}
+
+/* ================= TAMPIKRI ================= */
+.tampikri{
+ max-width:1050px;width:90%;margin:40px auto;
+ padding:38px 24px;text-align:center;border-radius:25px;
+ background:linear-gradient(135deg,#ffffff18,#ffffff08);
+ border:1px solid #ffffff25;box-shadow:0 15px 40px #0003
+}
+.tampikri-icone{font-size:48px}
+.tampikri h2{font-size:clamp(25px,4vw,38px);color:#facc15;margin:10px 0}
+.tampikri p{max-width:750px;margin:0 auto 20px;color:#dbeafe}
+
+/* ================= STATISTIQUES ================= */
+.statistiques{
+ max-width:1000px;margin:25px auto;
+ display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px
+}
+.stat{
+ text-align:center;padding:20px 12px;border-radius:16px;
+ background:#0003;border:1px solid #ffffff16
+}
+.stat strong{display:block;font-size:30px;color:#00e5ff}
+.stat span{color:#dbeafe}
+
+/* ================= FOOTER ================= */
+footer{
+ margin-top:45px;padding:35px 18px;text-align:center;
+ background:linear-gradient(135deg,#020617,#082f49,#0f172a);
+ box-shadow:0 -8px 30px #0003
+}
+footer h2{font-size:22px;color:#00e5ff;margin-bottom:8px}
+footer p{margin:8px 0;color:#cbd5e1}
+.socials{
+ display:flex;flex-wrap:wrap;justify-content:center;
+ gap:10px;margin:20px 0
+}
+.socials a{
+ padding:8px 16px;border:1px solid #ffffff30;
+ border-radius:25px
+}
+.socials a:hover{background:#00c6ff;color:#061a2e}
+.devise{color:#facc15!important;font-weight:bold}
+
+/* ================= ANIMATION ================= */
+@keyframes fadeDown{
+ from{opacity:0;transform:translateY(-20px)}
+ to{opacity:1;transform:translateY(0)}
+}
+
+/* ================= TABLETTE ================= */
+@media(max-width:900px){
+ .menu-grille{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .grille{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .statistiques{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+/* ================= TÉLÉPHONE ================= */
+@media(max-width:600px){
+ .header-haut{min-height:60px;padding:9px 12px}
+ .logo{font-size:22px}
+ .header-actions{gap:5px}
+ .btn-langue,.btn-menu{padding:9px;font-size:13px}
+ #menuPrincipal{padding:10px 12px 15px;max-height:75vh}
+ .menu-grille{grid-template-columns:1fr;gap:7px}
+ .menu-lien,.menu-bouton{padding:12px;font-size:14px}
+ .sous-menu{margin-top:4px}
+ .hero{min-height:360px;padding:48px 18px}
+ .hero h1{font-size:37px}
+ .hero p{font-size:16px}
+ .hero-boutons{flex-direction:column}
+ .hero-boutons .btn{width:100%}
+ section.contenu{padding:30px 16px}
+ .grille{grid-template-columns:1fr;gap:17px}
+ .carte{padding:23px 19px}
+ .tampikri{padding:30px 18px}
+ .statistiques{gap:10px}
+ .stat{padding:16px 8px}
+ footer{padding:30px 15px}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+ <div class="header-haut">
+  <a href="index.php" class="logo" aria-label="Accueil InfoPro">
+   💻 Infor<span>matique</span>
+  </a>
+
+  <div class="header-actions">
+   <button type="button" class="btn-langue" id="btnFR"
+    onclick="changerLangue('fr')">FR</button>
+   <button type="button" class="btn-langue" id="btnMG"
+    onclick="changerLangue('mg')">ML</button>
+   <button type="button" class="btn-menu" id="btnMenuPrincipal"
+    onclick="toggleMenuPrincipal()" aria-expanded="false"
+    aria-controls="menuPrincipal">☰ Menu</button>
+  </div>
+ </div>
+
+ <nav id="menuPrincipal" aria-label="Menu principal">
+  <div class="menu-grille">
+
+   <div class="menu-item">
+    <a class="menu-lien" href="index.html">
+     <span data-fr="🏠 Accueil" data-mg="🏠 Fandraisana">🏠 Accueil</span>
+    </a>
+   </div>
+
+   <!-- COURS -->
+   <div class="menu-item">
+    <button class="menu-bouton" onclick="toggleSousMenu('coursMenu',this)"
+     aria-expanded="false" aria-controls="coursMenu">
+     <span data-fr="📚 Cours" data-mg="📚 Lesona">📚 Cours</span><span>▾</span>
+    </button>
+    <div class="sous-menu" id="coursMenu">
+     <div class="sous-titre">🎓 Collège</div>
+     <a href="6ème.html">📘 6ème</a>
+     <a href="5ème.html">📘 5ème</a>
+     <a href="4ème.html">📘 4ème</a>
+     <a href="3ème.html">📘 3ème</a>
+     <div class="sous-titre">🎓 Lycée</div>
+     <a href="2nd2.html">📗 Seconde</a>
+     <a href="1ère.html">📗 Première</a>
+     <a href="TLe.html">📗 Terminale</a>
+     <div class="sous-titre">📚 Ressources</div>
+     <a href="Leçon-complet4.html">Cours complets</a>
+     <a href="Access.html">Microsoft Access</a>
+     <a href="Raccourcis-clavier.html">⌨️ Raccourcis clavier</a>
+    </div>
+   </div>
+
+   <!-- EXERCICES -->
+   <div class="menu-item">
+    <button class="menu-bouton" onclick="toggleSousMenu('exerciceMenu',this)"
+     aria-expanded="false" aria-controls="exerciceMenu">
+     <span data-fr="📝 Exercice" data-mg="📝 Fanazaran-tena">📝 Exercice</span><span>▾</span>
+    </button>
+    <div class="sous-menu" id="exerciceMenu">
+     <div class="sous-titre">🎓 Collège</div>
+     <a href="Exercice9.html">Exercices collège</a>
+     <a href="Activité-défis-des-élèves.html">Activités et défis</a>
+     <a href="Exercice-tableau-excel.html">Exercices Excel</a>
+     <a href="Raccourcis-clavier.html">Raccourcis clavier</a>
+     <div class="sous-titre">🎓 Lycée</div>
+     <a href="examen-informatique.html>Examen informatique</a>
+     <a href="examen-informatique2.html">Examen TICE corrigé</a>
+     <a href="maintenance.html">Maintenance informatique</a>
+    </div>
+   </div>
+
+   <!-- AUTRES RUBRIQUES -->
+   <div class="menu-item">
+    <button class="menu-bouton"
+     onclick="toggleSousMenu('autresMenu',this)"
+     aria-expanded="false" aria-controls="autresMenu">
+     <span data-fr="🌐 Autres rubriques" data-mg="🌐 Sokajy hafa">🌐 Autres rubriques</span><span>▾</span>
+    </button>
+    <div class="sous-menu" id="autresMenu">
+     <div class="sous-titre">Présentation</div>
+     <a href="presentation.html">👨‍🏫 Présentation générale</a>
+     <a href="presentation.html">À propos de moi</a>
+     <div class="sous-titre">Actualités</div>
+     <a href="actualite.html">📰 Toutes les actualités</a>
+     <a href="Activité-défis-des-élèves.html">Activités des élèves</a>
+     <div class="sous-titre">Jeux</div>
+     <a href="jeu.html">🎮 Tous les jeux</a>
+     <a href=" composants-ordinateur.html">composants de l'ordinateur</a>
+     <div class="sous-titre">Connexion</div>
+     <a href="login.html">🔐 Connexion</a>
+     <a href="#" onclick="deconnexion();return false;">🚪 Déconnexion</a>
+     <div class="sous-titre">Administration</div>
+     <a href="admin.html">⚙️ IT Admin</a>
+     <a href="eleve.html">👨‍🎓 Gestion des élèves</a>
+    </div>
+   </div>
+
+   <!-- FIKAMBANANA -->
+   <div class="menu-item">
+    <button class="menu-bouton"
+     onclick="toggleSousMenu('associationMenu',this)"
+     aria-expanded="false" aria-controls="associationMenu">
+     <span data-fr="✝️ Fikambanana Masina" data-mg="✝️ Fikambanana Masina">✝️ Fikambanana Masina</span><span>▾</span>
+    </button>
+    <div class="sous-menu" id="associationMenu">
+     <a href="TAMPIKRI.html">🙏 TAMPIKRI</a>
+     <a href="FET.html">✝️ FET</a>
+     <a href="diagnostic-materiel.html">🔜diagnostic-materiel</a>
+     <a href="bible.html">📖 Baiboly</a>
+     <a href="Emploi-du-temps.html">📅 Emploi du temps</a>
+     <a href="Access.html">🗄️ Microsoft Access</a>
+    </div>
+   </div>
+
+  </div>
+  <p class="menu-note"
+   data-fr="Choisissez une rubrique pour afficher ses liens."
+   data-mg="Misafidiana sokajy iray hijerena ireo rohy.">
+   Choisissez une rubrique pour afficher ses liens.
+  </p>
+ </nav>
+</header>
+
+<!-- ================= CONTENU PRINCIPAL ================= -->
+<main>
+
+ <section class="hero">
+  <div class="hero-contenu">
+   <h1>
+    <span data-fr="Bienvenue sur" data-mg="Tongasoa eto amin'ny">Bienvenue sur</span>
+    <span>TICE</span>
+   </h1>
+
+   <p data-fr="Apprendre l'informatique de manière moderne, interactive et pratique."
+      data-mg="Mianatra informatique amin'ny fomba maoderina, mifampitohy ary azo ampiharina.">
+    Apprendre l'informatique de manière moderne, interactive et pratique.
+   </p>
+
+   <p data-fr="Des cours, des exercices et des activités pour progresser."
+      data-mg="Lesona, fanazaran-tena ary hetsika hanatsarana ny fahaiza-manao.">
+    Des cours, des exercices et des activités pour progresser.
+   </p>
+
+   <div class="slogan"
+    data-fr="🚀 Apprendre • Pratiquer • Réussir 🌟"
+    data-mg="🚀 Mianatra • Mampihatra • Mahomby 🌟">
+    🚀 Apprendre • Pratiquer • Réussir 🌟
+   </div>
+
+   <div class="hero-boutons">
+    <a href="6ème.html" class="btn btn-principal"
+     data-fr="📚 Commencer les cours" data-mg="📚 Hanomboka lesona">
+     📚 Commencer les cours
+    </a>
+    <a href="Leçon-complet4.html" class="btn btn-secondaire"
+     data-fr="📖 Cours complets" data-mg="📖 Lesona feno">
+     📖 Cours complets
+    </a>
+    <a href="jeu-educatif.html" class="btn btn-secondaire"
+     data-fr="🎮 Jeux éducatifs" data-mg="🎮 Lalao fanabeazana">
+     🎮 Jeux éducatifs
+    </a>
+   </div>
+  </div>
+ </section>
+
+ <section class="contenu">
+  <div class="titre-section">
+   <h2 data-fr="Bienvenue dans votre espace informatique"
+       data-mg="Tongasoa eto amin'ny sehatra informatique">
+    Bienvenue dans votre espace informatique
+   </h2>
+   <p data-fr="Choisissez une rubrique pour commencer."
+      data-mg="Misafidiana sokajy iray hanombohana.">
+    Choisissez une rubrique pour commencer.
+   </p>
+  </div>
+
+  <div class="grille">
+   <article class="carte">
+    <div class="icone">📚</div>
+    <h3 data-fr="Cours d'informatique" data-mg="Lesona informatique">Cours d'informatique</h3>
+    <p data-fr="Word, Excel, PowerPoint, HTML, CSS, JavaScript, Python, Java, binaire et maintenance."
+       data-mg="Word, Excel, PowerPoint, HTML, CSS, JavaScript, Python, Java, binaire ary maintenance.">
+     Word, Excel, PowerPoint, HTML, CSS, JavaScript, Python, Java, binaire et maintenance.
+    </p>
+    <a class="btn-carte" href="Leçon-complet4.html"
+     data-fr="Voir les cours" data-mg="Hijery lesona">Voir les cours</a>
+   </article>
+
+   <article class="carte">
+    <div class="icone">📝</div>
+    <h3 data-fr="Exercices et examens" data-mg="Fanazaran-tena sy fanadinana">Exercices et examens</h3>
+    <p data-fr="Entraînez-vous avec des exercices adaptés aux niveaux du collège et du lycée."
+       data-mg="Manaova fanazaran-tena mifanaraka amin'ny ambaratonga collège sy lycée.">
+     Entraînez-vous avec des exercices adaptés aux niveaux du collège et du lycée.
+    </p>
+    <a class="btn-carte" href="Exercice9.html"
+     data-fr="Commencer" data-mg="Hanomboka">Commencer</a>
+   </article>
+
+   <article class="carte">
+    <div class="icone">💻</div>
+    <h3 data-fr="Programmation" data-mg="Fandaharana informatika">Programmation</h3>
+    <p data-fr="Découvrez les bases du HTML, CSS, JavaScript, Python et Java."
+       data-mg="Fantaro ny fototry ny HTML, CSS, JavaScript, Python ary Java.">
+     Découvrez les bases du HTML, CSS, JavaScript, Python et Java.
+    </p>
+    <a class="btn-carte" href="Leçon-complet4.html"
+     data-fr="Découvrir" data-mg="Hijery">Découvrir</a>
+   </article>
+
+   <article class="carte">
+    <div class="icone">🎮</div>
+    <h3 data-fr="Quiz et jeux" data-mg="Quiz sy lalao">Quiz et jeux</h3>
+    <p data-fr="Apprenez en jouant grâce aux activités interactives et éducatives."
+       data-mg="Mianara amin'ny alalan'ny lalao sy hetsika ifanakalozana.">
+     Apprenez en jouant grâce aux activités interactives et éducatives.
+    </p>
+    <a class="btn-carte" href="Exercice9.html"
+     data-fr="Jouer" data-mg="Hilalao">Jouer</a>
+   </article>
+
+   <article class="carte">
+    <div class="icone">⌨️</div>
+    <h3 data-fr="Raccourcis clavier" data-mg="Raccourcis clavier">Raccourcis clavier</h3>
+    <p data-fr="Découvrez les touches et combinaisons utiles sur ordinateur et dans les logiciels."
+       data-mg="Fantaro ireo touche sy combinaison ilaina amin'ny ordinateur sy logiciel.">
+     Découvrez les touches et combinaisons utiles sur ordinateur et dans les logiciels.
+    </p>
+    <a class="btn-carte" href="Raccourcis-clavier.html"
+     data-fr="Consulter" data-mg="Hijery">Consulter</a>
+   </article>
+
+   <article class="carte">
+    <div class="icone">🔧</div>
+    <h3 data-fr="Maintenance informatique" data-mg="Fikojakojana ordinateur">Maintenance informatique</h3>
+    <p data-fr="Apprenez les bases du diagnostic, du dépannage et de l'installation des systèmes."
+       data-mg="Ianaro ny fototry ny diagnostic, dépannage ary fametrahana système.">
+     Apprenez les bases du diagnostic, du dépannage et de l'installation des systèmes.
+    </p>
+    <a class="btn-carte" href="maintenance.html"
+     data-fr="Découvrir" data-mg="Hijery">Découvrir</a>
+   </article>
+  </div>
+ </section>
+
+ <section class="tampikri">
+  <div class="tampikri-icone">🙏</div>
+  <h2 data-fr="Fikambanana Masina TAMPIKRI"
+      data-mg="Fikambanana Masina TAMPIKRI">
+   Fikambanana Masina TAMPIKRI
+  </h2>
+  <p data-fr="Un espace consacré aux prières, aux formations, aux activités et aux ressources des groupes."
+     data-mg="Sehatra natokana ho an'ny vavaka, fiofanana, hetsika ary fitaovana ho an'ny fikambanana.">
+   Un espace consacré aux prières, aux formations, aux activités et aux ressources des groupes.
+  </p>
+  <p><strong>🙏 Foi • Fitiavana • Firaisankina</strong></p>
+  <a href="TAMPIKRI.html" class="btn-carte"
+   data-fr="Découvrir TAMPIKRI" data-mg="Hijery TAMPIKRI">
+   Découvrir TAMPIKRI
+  </a>
+ </section>
+
+ <section class="contenu">
+  <div class="titre-section">
+   <h2 data-fr="Notre objectif" data-mg="Ny tanjonay">Notre objectif</h2>
+   <p data-fr="Rendre l'apprentissage de l'informatique accessible et pratique."
+      data-mg="Hanamora ny fianarana informatique sy hampihatra izany.">
+    Rendre l'apprentissage de l'informatique accessible et pratique.
+   </p>
+  </div>
+
+  <div class="statistiques">
+   <div class="stat"><strong>📘</strong><span data-fr="Cours" data-mg="Lesona">Cours</span></div>
+   <div class="stat"><strong>✍️</strong><span data-fr="Exercices" data-mg="Fanazaran-tena">Exercices</span></div>
+   <div class="stat"><strong>🎯</strong><span data-fr="Pratique" data-mg="Fampiharana">Pratique</span></div>
+   <div class="stat"><strong>🌟</strong><span data-fr="Réussite" data-mg="Fahombiazana">Réussite</span></div>
+  </div>
+ </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+ <h2>💻 Mr Tahiry - Informatique 👨‍🏫</h2>
+ <p>📅 <span id="dateFooter"></span></p>
+
+ <div class="socials">
+  <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">📘 Facebook</a>
+  <a href="https://wa.me/261346762427" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a>
+  <a href="mailto:jeanjacquestahiriniaina@gmail.com">📧 E-mail</a>
+ </div>
+
+ <p class="devise" data-fr="🚀 Apprendre • Pratiquer • Réussir 🌟"
+    data-mg="🚀 Mianatra • Mampihatra • Mahomby 🌟">
+  🚀 Apprendre • Pratiquer • Réussir 🌟
+ </p>
+ <p>© <span id="anneeFooter"></span> Informatique — Tous droits réservés.</p>
+</footer>
+
+<script>
+"use strict";
+
+/* ================= MENU PRINCIPAL ================= */
+function toggleMenuPrincipal(){
+ const menu=document.getElementById("menuPrincipal");
+ const bouton=document.getElementById("btnMenuPrincipal");
+ const ouvert=menu.classList.toggle("menu-ouvert");
+
+ bouton.setAttribute("aria-expanded",String(ouvert));
+ bouton.innerHTML=ouvert?"✕ Fermer":"☰ Menu";
+
+ if(!ouvert) fermerTousLesSousMenus();
+}
+
+/* ================= SOUS-MENUS ================= */
+function toggleSousMenu(id,bouton){
+ const cible=document.getElementById(id);
+ const dejaOuvert=cible.classList.contains("ouvert");
+
+ fermerTousLesSousMenus();
+
+ if(!dejaOuvert){
+  cible.classList.add("ouvert");
+  bouton.setAttribute("aria-expanded","true");
+ }
+}
+
+function fermerTousLesSousMenus(){
+ document.querySelectorAll("#menuPrincipal .sous-menu").forEach(function(menu){
+  menu.classList.remove("ouvert");
+ });
+
+ document.querySelectorAll("#menuPrincipal .menu-bouton").forEach(function(bouton){
+  bouton.setAttribute("aria-expanded","false");
+ });
+}
+
+/* ================= FERMER APRÈS NAVIGATION ================= */
+document.querySelectorAll("#menuPrincipal a").forEach(function(lien){
+ lien.addEventListener("click",function(){
+  if(this.getAttribute("href")==="#") return;
+
+  document.getElementById("menuPrincipal").classList.remove("menu-ouvert");
+
+  const bouton=document.getElementById("btnMenuPrincipal");
+  bouton.setAttribute("aria-expanded","false");
+  bouton.innerHTML="☰ Menu";
+  fermerTousLesSousMenus();
+ });
+});
+
+/* ================= LANGUES FR / MALAGASY ================= */
+function changerLangue(langue){
+ const mg=langue==="mg";
+
+ document.querySelectorAll("[data-fr][data-mg]").forEach(function(element){
+  const texte=mg?element.getAttribute("data-mg"):element.getAttribute("data-fr");
+
+  if(texte!==null){
+   element.textContent=texte;
+  }
+ });
+
+ document.documentElement.lang=mg?"mg":"fr";
+
+ document.getElementById("btnFR").classList.toggle("actif",!mg);
+ document.getElementById("btnMG").classList.toggle("actif",mg);
+
+ try{
+  localStorage.setItem("infoProLangue",mg?"mg":"fr");
+ }catch(e){}
+}
+
+/* ================= DÉCONNEXION ================= */
+function deconnexion(){
+ if(!confirm("Voulez-vous vous déconnecter ?")) return;
+
+ try{
+  sessionStorage.removeItem("infoProConnecte");
+  sessionStorage.removeItem("infoProUtilisateur");
+  sessionStorage.removeItem("acces_site");
+ }catch(e){}
+
+ window.location.href="login.html";
+}
+
+/* ================= DATE AUTOMATIQUE ================= */
+(function(){
+ const maintenant=new Date();
+
+ document.getElementById("dateFooter").textContent=
+  maintenant.toLocaleDateString("fr-FR",{
+   day:"2-digit",month:"long",year:"numeric"
+  });
+
+ document.getElementById("anneeFooter").textContent=
+  maintenant.getFullYear();
+})();
+
+/* ================= RESTAURER LA LANGUE ================= */
+try{
+ const langue=localStorage.getItem("infoProLangue");
+ changerLangue(langue==="mg"?"mg":"fr");
+}catch(e){
+ changerLangue("fr");
+}
+
+/* ================= CONNEXION =================
+   Cette vérification convient uniquement si la page
+   login.html utilise les mêmes clés sessionStorage.
+   Pour une véritable protection, utiliser les sessions PHP.
+================================================ */
+(function(){
+ let connecte=false;
+
+ try{
+  connecte=sessionStorage.getItem("infoProConnecte")==="true";
+ }catch(e){}
+
+ if(!connecte){
+  document.body.style.display="none";
+  window.location.replace("login.html");
+ }
+})();
+</script>
+
+</body>
+</html>

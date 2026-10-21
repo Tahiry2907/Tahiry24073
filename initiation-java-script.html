@@ -1,0 +1,1976 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>JavaScript - Lesona Complete | Mr Tahiry</title>
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    color:white;
+    min-height:100vh;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header{
+    text-align:center;
+    padding:25px 15px;
+    background:rgba(0,0,0,.25);
+    box-shadow:0 5px 20px rgba(0,0,0,.3);
+}
+
+header h1{
+    margin-bottom:15px;
+    font-size:30px;
+}
+
+header p{
+    margin-bottom:15px;
+    color:#dbeafe;
+}
+
+button{
+    padding:10px 16px;
+    border:none;
+    border-radius:10px;
+    margin:5px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.3s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    opacity:.9;
+}
+
+.lang{
+    background:white;
+    color:#2c5364;
+}
+
+.nav{
+    background:#0284c7;
+    color:white;
+}
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.container{
+    width:92%;
+    max-width:950px;
+    margin:auto;
+    padding:25px 0 40px;
+}
+
+
+/* =====================================================
+   PROGRESS BAR
+===================================================== */
+
+.progress-area{
+    background:rgba(255,255,255,.12);
+    padding:15px;
+    border-radius:15px;
+    margin-bottom:20px;
+}
+
+.progress-text{
+    text-align:center;
+    margin-bottom:8px;
+}
+
+.progress{
+    width:100%;
+    height:10px;
+    background:#334155;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    height:100%;
+    width:0%;
+    background:#38bdf8;
+    transition:.4s;
+}
+
+
+/* =====================================================
+   SLIDES
+===================================================== */
+
+.slide{
+    display:none;
+    background:white;
+    color:#172033;
+    padding:28px;
+    border-radius:18px;
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+    animation:slideIn .4s ease;
+}
+
+.slide.active{
+    display:block;
+}
+
+@keyframes slideIn{
+
+    from{
+        opacity:0;
+        transform:translateX(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+
+}
+
+.slide h2{
+    color:#0369a1;
+    margin-bottom:18px;
+}
+
+.slide h3{
+    color:#0f766e;
+    margin:18px 0 10px;
+}
+
+.slide p{
+    margin:12px 0;
+}
+
+.slide li{
+    margin:8px 0;
+    margin-left:20px;
+}
+
+
+/* =====================================================
+   LANGUAGE
+===================================================== */
+
+.ml{
+    display:none;
+}
+
+.hidden{
+    display:none !important;
+}
+
+
+/* =====================================================
+   CODE
+===================================================== */
+
+.code{
+    background:#020617;
+    color:#00ff66;
+    padding:18px;
+    border-radius:12px;
+    font-family:Consolas,monospace;
+    overflow-x:auto;
+    margin:15px 0;
+    line-height:1.7;
+}
+
+.copy-btn{
+    background:#475569;
+    color:white;
+    font-size:13px;
+}
+
+
+/* =====================================================
+   INFO BOX
+===================================================== */
+
+.info{
+    background:#e0f2fe;
+    color:#075985;
+    padding:15px;
+    border-left:5px solid #0284c7;
+    border-radius:8px;
+    margin:15px 0;
+}
+
+.warning{
+    background:#fef3c7;
+    color:#92400e;
+    padding:15px;
+    border-left:5px solid #f59e0b;
+    border-radius:8px;
+    margin:15px 0;
+}
+
+
+/* =====================================================
+   TABLE
+===================================================== */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin:15px 0;
+}
+
+th,td{
+    border:1px solid #cbd5e1;
+    padding:10px;
+    text-align:center;
+}
+
+th{
+    background:#0369a1;
+    color:white;
+}
+
+
+/* =====================================================
+   DEMO
+===================================================== */
+
+.demo{
+    background:#f1f5f9;
+    padding:20px;
+    border-radius:12px;
+    margin-top:15px;
+}
+
+.demo input{
+    width:100%;
+    padding:12px;
+    border:1px solid #94a3b8;
+    border-radius:8px;
+    margin:8px 0;
+    font-size:16px;
+}
+
+.demo button{
+    background:#0284c7;
+    color:white;
+}
+
+.output{
+    background:#020617;
+    color:#00ff66;
+    padding:15px;
+    border-radius:10px;
+    margin-top:10px;
+    min-height:45px;
+}
+
+
+/* =====================================================
+   QUIZ
+===================================================== */
+
+.quiz-question{
+    background:#f8fafc;
+    padding:15px;
+    border-radius:10px;
+    margin:15px 0;
+}
+
+.quiz-question label{
+    display:block;
+    padding:7px;
+    cursor:pointer;
+}
+
+.quiz-result{
+    margin-top:15px;
+    padding:15px;
+    border-radius:10px;
+    font-weight:bold;
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.navigation{
+    text-align:center;
+    margin-top:20px;
+}
+
+#slideNumber{
+    margin:10px;
+    font-weight:bold;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+    text-align:center;
+    padding:25px;
+    background:#020617;
+    color:#cbd5e1;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:600px){
+
+    header h1{
+        font-size:23px;
+    }
+
+    .container{
+        width:94%;
+    }
+
+    .slide{
+        padding:20px;
+    }
+
+    .navigation button{
+        padding:9px 12px;
+    }
+
+    table{
+        font-size:14px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+<h1>
+    ⚡
+    <span class="fr">LEÇON JAVASCRIPT</span>
+    <span class="ml">LESONA JAVASCRIPT</span>
+</h1>
+
+<p class="fr">
+    Apprendre JavaScript progressivement avec des exemples pratiques.
+</p>
+
+<p class="ml">
+    Mianatra JavaScript tsikelikely amin'ny ohatra azo ampiharina.
+</p>
+
+
+<button class="lang" onclick="setLang('fr')">
+    🇫🇷 FR
+</button>
+
+<button class="lang" onclick="setLang('ml')">
+    🇲🇬 ML
+</button>
+
+</header>
+
+
+
+<div class="container">
+
+
+<!-- =====================================================
+     PROGRESS
+===================================================== -->
+
+<div class="progress-area">
+
+    <div id="slideNumber" class="progress-text">
+        Leçon 1 / 20
+    </div>
+
+    <div class="progress">
+
+        <div
+            class="progress-bar"
+            id="progressBar">
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     SLIDE 1
+===================================================== -->
+
+<div class="slide active">
+
+<h2>
+    📌
+    <span class="fr">1. Qu'est-ce que JavaScript ?</span>
+    <span class="ml">1. Inona ny JavaScript ?</span>
+</h2>
+
+<p class="fr">
+    JavaScript est un langage de programmation utilisé
+    principalement pour rendre les pages web interactives.
+</p>
+
+<p class="ml">
+    JavaScript dia fiteny programmation ampiasaina
+    indrindra mba hahatonga ny pejy web hifandray sy hifampiresaka
+    amin'ny mpampiasa.
+</p>
+
+<div class="info">
+
+    <strong class="fr">HTML + CSS + JavaScript</strong>
+
+    <strong class="ml">
+        HTML + CSS + JavaScript
+    </strong>
+
+    <br><br>
+
+    <span class="fr">
+        HTML = structure<br>
+        CSS = apparence<br>
+        JavaScript = comportement et interaction
+    </span>
+
+    <span class="ml">
+        HTML = firafitra<br>
+        CSS = endrika<br>
+        JavaScript = fihetsika sy interaction
+    </span>
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     SLIDE 2
+===================================================== -->
+
+<div class="slide">
+
+<h2>
+    📌
+    <span class="fr">2. Premier programme</span>
+    <span class="ml">2. Programme voalohany</span>
+</h2>
+
+<p class="fr">
+    JavaScript peut afficher un message avec
+    <strong>console.log()</strong>.
+</p>
+
+<p class="ml">
+    JavaScript dia afaka mampiseho hafatra amin'ny
+    <strong>console.log()</strong>.
+</p>
+
+<div class="code">
+console.log("Bonjour !");
+</div>
+
+<button class="copy-btn" onclick="copyCode(this)">
+    📋 Copier
+</button>
+
+</div>
+
+
+
+<!-- =====================================================
+     SLIDE 3
+===================================================== -->
+
+<div class="slide">
+
+<h2>
+    📦
+    <span class="fr">3. Les variables</span>
+    <span class="ml">3. Ny variables</span>
+</h2>
+
+<p class="fr">
+    Une variable permet de stocker une information.
+</p>
+
+<p class="ml">
+    Ny variable dia toerana itehirizana information iray.
+</p>
+
+<div class="code">
+let nom = "Jean";
+let age = 20;
+
+console.log(nom);
+console.log(age);
+</div>
+
+<h3>let / const / var</h3>
+
+<table>
+
+<tr>
+<th>Mot</th>
+<th>Utilisation</th>
+</tr>
+
+<tr>
+<td>let</td>
+<td>Variable modifiable</td>
+</tr>
+
+<tr>
+<td>const</td>
+<td>Valeur constante</td>
+</tr>
+
+<tr>
+<td>var</td>
+<td>Ancienne manière</td>
+</tr>
+
+</table>
+
+</div>
+
+
+
+<!-- =====================================================
+     SLIDE 4
+===================================================== -->
+
+<div class="slide">
+
+<h2>
+    🔤
+    <span class="fr">4. Les types de données</span>
+    <span class="ml">4. Karazana données</span>
+</h2>
+
+<div class="code">
+let nom = "Tahiry";       // String
+let age = 34;             // Number
+let actif = true;         // Boolean
+let valeur = null;        // Null
+</div>
+
+<table>
+
+<tr>
+<th>Type</th>
+<th>Exemple</th>
+</tr>
+
+<tr>
+<td>String</td>
+<td>"Bonjour"</td>
+</tr>
+
+<tr>
+<td>Number</td>
+<td>25</td>
+</tr>
+
+<tr>
+<td>Boolean</td>
+<td>true / false</td>
+</tr>
+
+<tr>
+<td>Null</td>
+<td>null</td>
+</tr>
+
+</table>
+
+</div>
+
+
+
+<!-- =====================================================
+     SLIDE 5
+===================================================== -->
+
+<div class="slide">
+
+<h2>
+    ➕
+    <span class="fr">5. Les opérateurs</span>
+    <span class="ml">5. Ireo opérateurs</span>
+</h2>
+
+<div class="code">
+let a = 10;
+let b = 3;
+
+a + b
+a - b
+a * b
+a / b
+a % b
+</div>
+
+<table>
+
+<tr>
+<th>Opérateur</th>
+<th>Signification</th>
+</tr>
+
+<tr>
+<td>+</td>
+<td>Addition</td>
+</tr>
+
+<tr>
+<td>-</td>
+<td>Soustraction</td>
+</tr>
+
+<tr>
+<td>*</td>
+<td>Multiplication</td>
+</tr>
+
+<tr>
+<td>/</td>
+<td>Division</td>
+</tr>
+
+<tr>
+<td>%</td>
+<td>Reste</td>
+</tr>
+
+</table>
+
+</div>
+
+
+
+<!-- =====================================================
+     SLIDE 6
+===================================================== -->
+
+<div class="slide">
+
+<h2>
+    🔀
+    <span class="fr">6. Les conditions</span>
+    <span class="ml">6. Ny conditions</span>
+</h2>
+
+<p class="fr">
+    Une condition permet de prendre une décision.
+</p>
+
+<p class="ml">
+    Ny condition dia ahafahan'ny programme mandray fanapahan-kevitra.
+</p>
+
+<div class="code">
+let age = 20;
+
+if(age >= 18){
+
+    console.log("Adulte");
+
+}else{
+
+    console.log("Mineur");
+
+}
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     SLIDE 7
+===================================================== -->
+
+<div class="slide">
+
+<h2>
+    🔁
+    <span class="fr">7. Les boucles</span>
+    <span class="ml">7. Ny boucles</span>
+</h2>
+
+<p class="fr">
+    Une boucle permet de répéter une instruction.
+</p>
+
+<p class="ml">
+    Ny boucle dia ahafahana mamerina instruction imbetsaka.
+</p>
+
+<div class="code">
+for(let i = 0; i < 5; i++){
+
+    console.log(i);
+
+}
+</div>
+
+<p class="fr">
+    Résultat : 0, 1, 2, 3, 4
+</p>
+
+<p class="ml">
+    Vokatra : 0, 1, 2, 3, 4
+</p>
+
+</div>
+
+
+
+<!-- =====================================================
+     SLIDE 8
+===================================================== -->
+
+<div class="slide">
+
+<h2>
+    ⚙️
+    <span class="fr">8. Les fonctions</span>
+    <span class="ml">8. Ny fonctions</span>
+</h2>
+
+<p class="fr">
+    Une fonction regroupe des instructions
+    que l'on peut réutiliser.
+</p>
+
+<p class="ml">
+    Ny fonction dia manangona instructions
+    izay azo ampiasaina imbetsaka.
+</p>
+
+<div class="code">
+function saluer(){
+
+    console.log("Bonjour");
+
+}
+
+saluer();
+</div>
+
+<h3>Avec paramètre</h3>
+
+<div class="code">
+function addition(a,b){
+
+    return a + b;
+
+}
+
+console.log(addition(5,3));
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     SLIDE 9
+===================================================== -->
+
+<div class="slide">
+
+<h2>
+    📚
+    <span class="fr">9. Les tableaux (Array)</span>
+    <span class="ml">9. Ny tableaux (Array)</span>
+</h2>
+
+<p class="fr">
+    Un tableau permet de stocker plusieurs valeurs.
+</p>
+
+<p class="ml">
+    Ny tableau dia ahafahana mitahiry valeurs maro.
+</p>
+
+<div class="code">
+let fruits = [
+    "Pomme",
+    "Banane",
+    "Orange"
+];
+
+console.log(fruits[0]);
+</div>
+
+<p class="fr">
+    Le premier élément possède l'indice 0.
+</p>
+
+<p class="ml">
+    Ny élément voalohany dia manana indice 0.
+</p>
+
+</div>
+
+
+
+<!-- =====================================================
+     SLIDE 10
+===================================================== -->
+
+<div class="slide">
+
+<h2>
+    🧩
+    <span class="fr">10. Les objets</span>
+    <span class="ml">10. Ny objets</span>
+</h2>
+
+<div class="code">
+let eleve = {
+
+    nom: "Jean",
+    age: 15,
+    classe: "3ème"
+
+};
+
+console.log(eleve.nom);
+</div>
+
+<p class="fr">
+    Un objet regroupe plusieurs informations
+    concernant une même chose.
+</p>
+
+<p class="ml">
+    Ny objet dia manangona informations maromaro
+    momba zavatra iray.
+</p>
+
+</div>
+
+
+
+<!-- =====================================================
+     SLIDE 11
+===================================================== -->
+
+<div class="slide">
+
+<h2>
+    🌐
+    <span class="fr">11. Le DOM</span>
+    <span class="ml">11. Ny DOM</span>
+</h2>
+
+<p class="fr">
+    Le DOM permet à JavaScript de modifier
+    les éléments HTML.
+</p>
+
+<p class="ml">
+    Ny DOM dia ahafahan'ny JavaScript manova
+    ireo éléments HTML.
+</p>
+
+<div class="code">
+document.getElementById("titre").innerHTML =
+"Bonjour !";
+</div>
+
+<div id="demoDOM" class="demo">
+
+    <h3 id="titreDemo">
+        Bonjour
+    </h3>
+
+    <button onclick="modifierDOM()">
+        ✨ Modifier
+    </button>
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     SLIDE 12
+===================================================== -->
+
+<div class="slide">
+
+<h2>
+    🖱️
+    <span class="fr">12. Les événements</span>
+    <span class="ml">12. Ny événements</span>
+</h2>
+
+<p class="fr">
+    Un événement se produit lorsqu'un utilisateur
+    agit sur la page.
+</p>
+
+<p class="ml">
+    Ny événement dia mitranga rehefa misy zavatra
+    ataon'ny utilisateur amin'ny page.
+</p>
+
+<div class="code">
+<button onclick="bonjour()">
+    Cliquez
+</button>
+</div>
+
+<button onclick="bonjour()">
+    👆 Cliquez ici
+</button>
+
+<div id="eventResult" class="output">
+    Résultat...
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     SLIDE 13
+===================================================== -->
+
+<div class="slide">
+
+<h2>
+    ⌨️
+    <span class="fr">13. Récupérer une saisie</span>
+    <span class="ml">13. Maka valeur avy amin'ny input</span>
+</h2>
+
+<p class="fr">
+    JavaScript peut récupérer ce que l'utilisateur
+    écrit dans un champ.
+</p>
+
+<p class="ml">
+    JavaScript afaka maka izay soratan'ny utilisateur
+    ao amin'ny input.
+</p>
+
+<div class="demo">
+
+<input
+    type="text"
+    id="nomInput"
+    placeholder="Écrivez votre nom"
+>
+
+<button onclick="afficherNom()">
+    Afficher
+</button>
+
+<div id="nomResult" class="output">
+    Résultat...
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     SLIDE 14
+===================================================== -->
+
+<div class="slide">
+
+<h2>
+    🧮
+    <span class="fr">14. Mini calculatrice</span>
+    <span class="ml">14. Mini calculatrice</span>
+</h2>
+
+<div class="demo">
+
+<input
+    type="number"
+    id="nombre1"
+    placeholder="Nombre 1"
+>
+
+<input
+    type="number"
+    id="nombre2"
+    placeholder="Nombre 2"
+>
+
+<button onclick="calculer('+')">
+    ➕
+</button>
+
+<button onclick="calculer('-')">
+    ➖
+</button>
+
+<button onclick="calculer('*')">
+    ✖️
+</button>
+
+<button onclick="calculer('/')">
+    ➗
+</button>
+
+<div id="calculResult" class="output">
+    Résultat...
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     SLIDE 15
+===================================================== -->
+
+<div class="slide">
+
+<h2>
+    🧠
+    <span class="fr">15. Exemple complet</span>
+    <span class="ml">15. Ohatra feno</span>
+</h2>
+
+<div class="code">
+let nom = "Tahiry";
+let age = 20;
+
+if(age >= 18){
+
+    console.log(
+        nom + " est adulte"
+    );
+
+}else{
+
+    console.log(
+        nom + " est mineur"
+    );
+}
+</div>
+
+<p class="fr">
+    Ici, JavaScript utilise une variable et une condition
+    pour afficher un résultat.
+</p>
+
+<p class="ml">
+    Eto dia mampiasa variable sy condition
+    ny JavaScript mba hamoahana résultat.
+</p>
+
+</div>
+
+
+
+<!-- =====================================================
+     SLIDE 16
+===================================================== -->
+
+<div class="slide">
+
+<h2>
+    🎯
+    <span class="fr">16. Exercices</span>
+    <span class="ml">16. Fanazaran-tena</span>
+</h2>
+
+<div class="info">
+
+<p class="fr">
+
+<strong>Exercice 1 :</strong><br>
+Créer une variable appelée <code>nom</code>.
+
+<br><br>
+
+<strong>Exercice 2 :</strong><br>
+Créer une variable <code>age</code>
+et vérifier si la personne est majeure.
+
+<br><br>
+
+<strong>Exercice 3 :</strong><br>
+Créer une fonction qui additionne deux nombres.
+
+<br><br>
+
+<strong>Exercice 4 :</strong><br>
+Créer une boucle qui affiche les nombres de 1 à 10.
+
+</p>
+
+
+<p class="ml">
+
+<strong>Fanazaran-tena 1 :</strong><br>
+Mamorona variable antsoina hoe <code>nom</code>.
+
+<br><br>
+
+<strong>Fanazaran-tena 2 :</strong><br>
+Mamorona variable <code>age</code>
+ary jereo raha olon-dehibe ilay olona.
+
+<br><br>
+
+<strong>Fanazaran-tena 3 :</strong><br>
+Mamorona fonction manampy isa roa.
+
+<br><br>
+
+<strong>Fanazaran-tena 4 :</strong><br>
+Mamorona boucle mampiseho ny isa 1 hatramin'ny 10.
+
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     SLIDE 17
+===================================================== -->
+
+<div class="slide">
+
+<h2>
+    💡
+    <span class="fr">17. Correction des exercices</span>
+    <span class="ml">17. Fanitsiana</span>
+</h2>
+
+<h3>Exercice 1</h3>
+
+<div class="code">
+let nom = "Jean";
+</div>
+
+<h3>Exercice 2</h3>
+
+<div class="code">
+let age = 20;
+
+if(age >= 18){
+
+    console.log("Majeur");
+
+}else{
+
+    console.log("Mineur");
+
+}
+</div>
+
+<h3>Exercice 3</h3>
+
+<div class="code">
+function addition(a,b){
+
+    return a + b;
+
+}
+</div>
+
+<h3>Exercice 4</h3>
+
+<div class="code">
+for(let i = 1; i <= 10; i++){
+
+    console.log(i);
+
+}
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     SLIDE 18
+===================================================== -->
+
+<div class="slide">
+
+<h2>
+    📝
+    <span class="fr">18. Quiz JavaScript</span>
+    <span class="ml">18. Quiz JavaScript</span>
+</h2>
+
+
+<div class="quiz-question">
+
+<strong>
+1. Quel langage rend une page web interactive ?
+</strong>
+
+<label>
+<input type="radio" name="q1" value="0">
+HTML
+</label>
+
+<label>
+<input type="radio" name="q1" value="1">
+JavaScript
+</label>
+
+<label>
+<input type="radio" name="q1" value="0">
+CSS
+</label>
+
+</div>
+
+
+
+<div class="quiz-question">
+
+<strong>
+2. Quelle instruction permet de créer une variable ?
+</strong>
+
+<label>
+<input type="radio" name="q2" value="1">
+let
+</label>
+
+<label>
+<input type="radio" name="q2" value="0">
+print
+</label>
+
+<label>
+<input type="radio" name="q2" value="0">
+html
+</label>
+
+</div>
+
+
+
+<div class="quiz-question">
+
+<strong>
+3. Quel symbole représente une condition ?
+</strong>
+
+<label>
+<input type="radio" name="q3" value="1">
+if
+</label>
+
+<label>
+<input type="radio" name="q3" value="0">
+for
+</label>
+
+<label>
+<input type="radio" name="q3" value="0">
+array
+</label>
+
+</div>
+
+
+
+<div class="quiz-question">
+
+<strong>
+4. Quelle instruction répète une action ?
+</strong>
+
+<label>
+<input type="radio" name="q4" value="1">
+for
+</label>
+
+<label>
+<input type="radio" name="q4" value="0">
+let
+</label>
+
+<label>
+<input type="radio" name="q4" value="0">
+const
+</label>
+
+</div>
+
+
+
+<div class="quiz-question">
+
+<strong>
+5. Quel élément permet de modifier le HTML ?
+</strong>
+
+<label>
+<input type="radio" name="q5" value="1">
+DOM
+</label>
+
+<label>
+<input type="radio" name="q5" value="0">
+CPU
+</label>
+
+<label>
+<input type="radio" name="q5" value="0">
+RAM
+</label>
+
+</div>
+
+
+<button
+    class="nav"
+    onclick="corrigerQuiz()">
+
+    🎯 Vérifier le quiz
+
+</button>
+
+
+<div
+    id="quizResult"
+    class="quiz-result">
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     SLIDE 19
+===================================================== -->
+
+<div class="slide">
+
+<h2>
+    📋
+    <span class="fr">19. Résumé du cours</span>
+    <span class="ml">19. Famintinana ny lesona</span>
+</h2>
+
+<ul class="fr">
+
+<li>JavaScript rend les pages web interactives.</li>
+
+<li>Les variables stockent les données.</li>
+
+<li>Les conditions permettent de prendre des décisions.</li>
+
+<li>Les boucles permettent de répéter des instructions.</li>
+
+<li>Les fonctions permettent de réutiliser du code.</li>
+
+<li>Les tableaux stockent plusieurs valeurs.</li>
+
+<li>Les objets regroupent plusieurs informations.</li>
+
+<li>Le DOM permet de modifier le HTML.</li>
+
+<li>Les événements permettent de réagir aux actions de l'utilisateur.</li>
+
+</ul>
+
+
+<ul class="ml">
+
+<li>JavaScript mampihetsika ny pejy web.</li>
+
+<li>Ny variables mitahiry données.</li>
+
+<li>Ny conditions manao fanapahan-kevitra.</li>
+
+<li>Ny boucles mamerina instructions.</li>
+
+<li>Ny fonctions mampiasa code imbetsaka.</li>
+
+<li>Ny tableaux mitahiry valeurs maro.</li>
+
+<li>Ny objets manangona informations.</li>
+
+<li>Ny DOM manova HTML.</li>
+
+<li>Ny événements mamaly ny zavatra ataon'ny utilisateur.</li>
+
+</ul>
+
+</div>
+
+
+
+<!-- =====================================================
+     SLIDE 20
+===================================================== -->
+
+<div class="slide">
+
+<h2>
+    🎓
+    <span class="fr">20. Fin de la leçon</span>
+    <span class="ml">20. Faran'ny lesona</span>
+</h2>
+
+<div class="success" style="
+    background:#dcfce7;
+    color:#166534;
+    padding:20px;
+    border-radius:12px;
+">
+
+<p class="fr">
+
+🎉 Félicitations !
+
+Vous connaissez maintenant les principales bases
+de JavaScript.
+
+Continuez à pratiquer avec de petits projets
+pour progresser.
+
+</p>
+
+
+<p class="ml">
+
+🎉 Arahabaina !
+
+Efa fantatrao izao ny fototra lehibe amin'ny JavaScript.
+
+Tohizo amin'ny fanaovana petits projets
+ny fianarana mba hivoarana.
+
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<div class="navigation">
+
+<button
+    class="nav"
+    id="prevBtn"
+    onclick="prev()">
+
+    ⬅ Previous
+
+</button>
+
+
+<button
+    class="nav"
+    id="nextBtn"
+    onclick="next()">
+
+    Next ➡
+
+</button>
+
+</div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    💻 Mr Tahiry - Informatique 👨‍🏫
+
+    <br><br>
+
+    <span id="dateFooter"></span>
+
+</footer>
+
+
+
+<script>
+
+/* =====================================================
+   SLIDES
+===================================================== */
+
+let index = 0;
+
+const slides =
+    document.querySelectorAll(".slide");
+
+
+function showSlide(i){
+
+    slides.forEach(slide => {
+
+        slide.classList.remove("active");
+
+    });
+
+
+    slides[i].classList.add("active");
+
+
+    /* NUMERO */
+
+    document.getElementById("slideNumber").textContent =
+        "Leçon " + (i + 1) + " / " + slides.length;
+
+
+    /* PROGRESS */
+
+    const progress =
+        ((i + 1) / slides.length) * 100;
+
+
+    document.getElementById("progressBar").style.width =
+        progress + "%";
+
+
+    /* BOUTONS */
+
+    document.getElementById("prevBtn").style.opacity =
+        i === 0 ? ".5" : "1";
+
+
+    document.getElementById("nextBtn").style.opacity =
+        i === slides.length - 1 ? ".5" : "1";
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+function next(){
+
+    if(index < slides.length - 1){
+
+        index++;
+
+        showSlide(index);
+
+    }
+
+}
+
+
+function prev(){
+
+    if(index > 0){
+
+        index--;
+
+        showSlide(index);
+
+    }
+
+}
+
+
+
+/* =====================================================
+   LANGUAGE FR / ML
+===================================================== */
+
+function setLang(lang){
+
+    const fr =
+        document.querySelectorAll(".fr");
+
+    const ml =
+        document.querySelectorAll(".ml");
+
+
+    if(lang === "fr"){
+
+        fr.forEach(element => {
+
+            element.style.display = "";
+
+        });
+
+
+        ml.forEach(element => {
+
+            element.style.display = "none";
+
+        });
+
+
+        localStorage.setItem(
+            "javascriptLanguage",
+            "fr"
+        );
+
+    }
+
+
+    if(lang === "ml"){
+
+        fr.forEach(element => {
+
+            element.style.display = "none";
+
+        });
+
+
+        ml.forEach(element => {
+
+            element.style.display = "";
+
+        });
+
+
+        localStorage.setItem(
+            "javascriptLanguage",
+            "ml"
+        );
+
+    }
+
+}
+
+
+
+/* =====================================================
+   DOM DEMO
+===================================================== */
+
+function modifierDOM(){
+
+    document.getElementById("titreDemo").innerHTML =
+        "🎉 JavaScript a modifié le HTML !";
+
+}
+
+
+
+/* =====================================================
+   EVENT DEMO
+===================================================== */
+
+function bonjour(){
+
+    document.getElementById("eventResult").innerHTML =
+        "👋 Bonjour ! JavaScript fonctionne.";
+
+}
+
+
+
+/* =====================================================
+   INPUT DEMO
+===================================================== */
+
+function afficherNom(){
+
+    const nom =
+        document.getElementById("nomInput").value.trim();
+
+
+    const result =
+        document.getElementById("nomResult");
+
+
+    if(nom === ""){
+
+        result.innerHTML =
+            "⚠️ Écrivez d'abord votre nom.";
+
+        return;
+
+    }
+
+
+    result.innerHTML =
+        "👋 Bonjour " + nom + " !";
+
+}
+
+
+
+/* =====================================================
+   CALCULATRICE
+===================================================== */
+
+function calculer(operation){
+
+    const a =
+        Number(
+            document.getElementById("nombre1").value
+        );
+
+
+    const b =
+        Number(
+            document.getElementById("nombre2").value
+        );
+
+
+    const result =
+        document.getElementById("calculResult");
+
+
+    if(
+        document.getElementById("nombre1").value === "" ||
+        document.getElementById("nombre2").value === ""
+    ){
+
+        result.innerHTML =
+            "⚠️ Entrez les deux nombres.";
+
+        return;
+
+    }
+
+
+    let total;
+
+
+    if(operation === "+"){
+
+        total = a + b;
+
+    }
+
+    else if(operation === "-"){
+
+        total = a - b;
+
+    }
+
+    else if(operation === "*"){
+
+        total = a * b;
+
+    }
+
+    else if(operation === "/"){
+
+        if(b === 0){
+
+            result.innerHTML =
+                "❌ Division par zéro impossible.";
+
+            return;
+
+        }
+
+        total = a / b;
+
+    }
+
+
+    result.innerHTML =
+        "🎯 Résultat : <strong>" + total + "</strong>";
+
+}
+
+
+
+/* =====================================================
+   QUIZ
+===================================================== */
+
+function corrigerQuiz(){
+
+    let score = 0;
+
+
+    for(let i = 1; i <= 5; i++){
+
+        const answer =
+            document.querySelector(
+                'input[name="q' + i + '"]:checked'
+            );
+
+
+        if(answer && answer.value === "1"){
+
+            score++;
+
+        }
+
+    }
+
+
+    const result =
+        document.getElementById("quizResult");
+
+
+    result.innerHTML =
+        "🎯 Score : " + score + " / 5";
+
+
+    if(score === 5){
+
+        result.innerHTML +=
+            "<br>🏆 Excellent !";
+
+    }
+
+    else if(score >= 3){
+
+        result.innerHTML +=
+            "<br>👍 Bien joué !";
+
+    }
+
+    else{
+
+        result.innerHTML +=
+            "<br>📚 Relisez la leçon et réessayez.";
+
+    }
+
+}
+
+
+
+/* =====================================================
+   COPIER LE CODE
+===================================================== */
+
+function copyCode(button){
+
+    const code =
+        button
+        .previousElementSibling
+        .innerText;
+
+
+    navigator.clipboard.writeText(code);
+
+
+    const oldText =
+        button.innerText;
+
+
+    button.innerText =
+        "✅ Copié !";
+
+
+    setTimeout(()=>{
+
+        button.innerText =
+            oldText;
+
+    },1500);
+
+}
+
+
+
+/* =====================================================
+   DATE
+===================================================== */
+
+document.getElementById("dateFooter").textContent =
+    new Date().toLocaleDateString(
+        "fr-FR",
+        {
+            day:"2-digit",
+            month:"2-digit",
+            year:"numeric"
+        }
+    );
+
+
+
+/* =====================================================
+   LANGUE SAUVEGARDÉE
+===================================================== */
+
+const savedLanguage =
+    localStorage.getItem("javascriptLanguage")
+    || "fr";
+
+
+setLang(savedLanguage);
+
+
+/* =====================================================
+   INITIALISATION
+===================================================== */
+
+showSlide(0);
+
+</script>
+
+
+</body>
+
+</html>
